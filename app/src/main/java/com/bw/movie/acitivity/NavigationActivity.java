@@ -1,6 +1,7 @@
 package com.bw.movie.acitivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,7 @@ public class NavigationActivity extends AppCompatActivity {
     @BindView(R.id.navigation_Button)
     android.widget.Button Button;
     private List<Integer> list;
+    private SharedPreferences inif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,53 +51,71 @@ public class NavigationActivity extends AppCompatActivity {
         list.add(R.drawable.three);
         list.add(R.drawable.four);
 
-        NavigationAdapter adapter = new NavigationAdapter(NavigationActivity.this,list);
-        ViewPager.setAdapter(adapter);
+        inif = getSharedPreferences("inif", MODE_PRIVATE);
+        boolean flag = inif.getBoolean("flag", false);
+        if (flag){
+            Intent intent = new Intent(NavigationActivity.this,LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }else {
+            NavigationAdapter adapter = new NavigationAdapter(NavigationActivity.this,list);
+            ViewPager.setAdapter(adapter);
 
-        ViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
 
-            }
 
-            @Override
-            public void onPageSelected(int i) {
-                if (list.size() -1 == i){
-                    Button.setVisibility(View.VISIBLE);
-                }else {
-                    Button.setVisibility(View.GONE);
+            ViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int i, float v, int i1) {
+
                 }
-                switch (i){
-                    case 0 :
-                        But1.setChecked(true);
-                        break;
-                    case 1 :
-                        But1.setChecked(true);
-                        break;
-                    case 2 :
-                        But1.setChecked(true);
-                        break;
-                    case 3 :
-                        But1.setChecked(true);
-                        break;
+
+                @Override
+                public void onPageSelected(int i) {
+                    if (list.size() -1 == i){
+                        Button.setVisibility(View.VISIBLE);
+                    }else {
+                        Button.setVisibility(View.GONE);
+                    }
+                    switch (i){
+                        case 0 :
+                            But1.setChecked(true);
+                            break;
+                        case 1 :
+                            But1.setChecked(true);
+                            break;
+                        case 2 :
+                            But1.setChecked(true);
+                            break;
+                        case 3 :
+                            But1.setChecked(true);
+                            break;
+                    }
+                    RadioGroup.check(RadioGroup.getChildAt(i).getId());
                 }
-                RadioGroup.check(RadioGroup.getChildAt(i).getId());
-            }
 
-            @Override
-            public void onPageScrollStateChanged(int i) {
+                @Override
+                public void onPageScrollStateChanged(int i) {
 
-            }
-        });
+                }
+            });
 
-        Button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NavigationActivity.this,LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+            Button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SharedPreferences.Editor edit = inif.edit();
+                    edit.putBoolean("flag",true);
+                    edit.commit();
+                    edit.apply();
+                    Intent intent = new Intent(NavigationActivity.this,LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+
+
+                }
+            });
+        }
+
+
 
     }
 }

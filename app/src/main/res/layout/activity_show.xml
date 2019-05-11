@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ShowActivity">
 
-</android.support.constraint.ConstraintLayout>
+   <android.support.v4.view.ViewPager
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/Ashow_ViewPager"></android.support.v4.view.ViewPager>
+
+    <RadioGroup
+        android:id="@+id/Ashow_RadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/Ashow_Radio1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:button="@null"
+            android:checked="true"
+            />
+        <RadioButton
+            android:id="@+id/Ashow_Radio2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:button="@null"
+            android:checked="true"
+            />
+        <RadioButton
+            android:id="@+id/Ashow_Radio3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:button="@null"
+            android:checked="true"
+            />
+    </RadioGroup>
+
+</RelativeLayout>

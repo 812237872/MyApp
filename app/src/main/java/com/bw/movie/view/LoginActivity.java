@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -39,8 +41,8 @@ public class LoginActivity extends AppCompatActivity implements ContractInterfac
     ImageView imager;
     private ContractInterface.PresenterInterface presenterInterface;
     private SharedPreferences sp;
-    private String s;
-    private String s1;
+
+    private boolean b = true ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +50,12 @@ public class LoginActivity extends AppCompatActivity implements ContractInterfac
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         presenterInterface = new MyPresenter<>(this);
+        PassWord();
 
 
 
-
-        sp = getSharedPreferences("inif", MODE_PRIVATE);
+        sp = getSharedPreferences("info",MODE_PRIVATE);
         boolean flag = sp.getBoolean("flag", false);
-
         if (flag){
             String phone = sp.getString("phone", "");
             String pwd = sp.getString("pwd", "");
@@ -62,9 +63,9 @@ public class LoginActivity extends AppCompatActivity implements ContractInterfac
             edit_phone.setText(phone);
             edit_pwd.setText(pwd);
         }else {
-            check.setChecked(flag);
             edit_phone.setText("");
             edit_pwd.setText("");
+            check.setChecked(false);
         }
 
         quicklyId.setOnClickListener(new View.OnClickListener() {
@@ -78,23 +79,27 @@ public class LoginActivity extends AppCompatActivity implements ContractInterfac
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean checked = check.isChecked();
-                if (checked){
-                    SharedPreferences.Editor edit = sp.edit();
-                    edit.putString("pwd", s1);
-                    edit.putString("phone",s);
+
+                String phone = edit_phone.getText().toString();
+                String pwd = edit_pwd.getText().toString();
+                SharedPreferences.Editor edit = sp.edit();
+
+                if(check.isChecked()){
+                    edit.putString("phone",phone);
+                    edit.putString("pwd",pwd);
                     edit.putBoolean("flag",true);
                     edit.commit();
-                    edit.apply();
+                }else {
+                    edit.clear();
                 }
+                edit.apply();
 
-                s = edit_phone.getText().toString();
-                s1 = edit_pwd.getText().toString();
-
-                String encrypt = EncryptUtil.encrypt(s1);
-                presenterInterface.pToLogin(s,encrypt,encrypt);
+                String encrypt = EncryptUtil.encrypt(pwd);
+                presenterInterface.pToLogin(phone,encrypt,encrypt);
             }
         });
+
+
 
     }
 
@@ -110,5 +115,22 @@ public class LoginActivity extends AppCompatActivity implements ContractInterfac
             Toast.makeText(LoginActivity.this,loginBean.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    //设置密码的显示和隐藏
+    private void PassWord() {
+        edit_pwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (b){
+                    edit_pwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    b = false ;
+                }else {
+                    edit_pwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    b = true ;
+                }
+            }
+        });
     }
 }

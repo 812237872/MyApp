@@ -12,8 +12,8 @@ import com.bw.movie.R;
 public class MainActivity extends AppCompatActivity {
 
     private ImageView imageView;
-    int i = 5 ;
-//123
+    int i = 1 ;
+
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
