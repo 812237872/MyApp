@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.bw.movie.R;
+import com.bw.movie.view.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.sendEmptyMessageDelayed(0,1000);
             }
             else {
-                Intent intent = new Intent(MainActivity.this,NavigationActivity.class);
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

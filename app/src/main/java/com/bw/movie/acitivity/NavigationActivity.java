@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
 
 public class NavigationActivity extends AppCompatActivity {
 
+    public static int flag=1;
     @BindView(R.id.navigation_ViewPager)
     android.support.v4.view.ViewPager ViewPager;
     @BindView(R.id.navigation_but_1)
@@ -49,6 +50,11 @@ public class NavigationActivity extends AppCompatActivity {
         list.add(R.drawable.three);
         list.add(R.drawable.four);
 
+        if(flag==2){
+            Intent intent = new Intent(NavigationActivity.this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
         NavigationAdapter adapter = new NavigationAdapter(NavigationActivity.this,list);
         ViewPager.setAdapter(adapter);
 
@@ -91,8 +97,9 @@ public class NavigationActivity extends AppCompatActivity {
         Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NavigationActivity.this,LoginActivity.class);
+                Intent intent = new Intent(NavigationActivity.this,MainActivity.class);
                 startActivity(intent);
+                flag=2;
                 finish();
             }
         });
