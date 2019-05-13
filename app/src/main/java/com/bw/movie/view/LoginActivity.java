@@ -43,6 +43,8 @@ public class LoginActivity extends AppCompatActivity implements ContractInterfac
     private SharedPreferences sp;
 
     private boolean b = true ;
+    public static String sessionId;
+    public static int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +108,8 @@ public class LoginActivity extends AppCompatActivity implements ContractInterfac
     @Override
     public void showLogin(Object object) {
         LoginBean loginBean = (LoginBean) object;
+        sessionId = loginBean.getResult().getSessionId();
+        userId = loginBean.getResult().getUserId();
         if (loginBean.getMessage().equals("登陆成功")){
             Toast.makeText(LoginActivity.this,loginBean.getMessage(),Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LoginActivity.this,ShowActivity.class);

@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 
 public class NavigationActivity extends AppCompatActivity {
 
-    public static int flag1=1;
+    public int flag1=1;
     @BindView(R.id.navigation_ViewPager)
     android.support.v4.view.ViewPager ViewPager;
     @BindView(R.id.navigation_but_1)

@@ -1,11 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="电影"/>
+        android:layout_height="186dp"
+        android:background="@drawable/hdpi2"
 
-</android.support.constraint.ConstraintLayout>
+        />
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/cinemadetail_icon_location_default_hdpi"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:padding="6dp"
+        />
+    <com.bw.movie.view.MyViews
+        android:layout_width="50dp"
+        android:layout_height="24dp"
+        android:padding="6dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="25dp"
+        />
+    <recycler.coverflow.RecyclerCoverFlow
+        android:layout_width="158dp"
+        android:layout_height="223dp"
+        android:id="@+id/rcf_cinema_flow"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_below="@id/rcf_cinema_flow"
+        android:id="@+id/re_1"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="热门电影"
+            android:textScaleX="25sp"
+            android:padding="5dp"
+            android:id="@+id/text1" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/Group2"
+            android:background="@drawable/qi"
+            android:layout_below="@id/text1"
+            android:scaleType="center"
+            android:id="@+id/img1"
+            />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rec_1"
+        android:layout_below="@id/img1"
+        android:layout_marginTop="10dp"
+        />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_below="@id/re_1"
+        android:id="@+id/re_2"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正在热映"
+            android:textScaleX="25sp"
+            android:padding="5dp"
+            android:id="@+id/text2" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/Group2"
+            android:background="@drawable/qi"
+            android:layout_below="@id/text2"
+            android:scaleType="center"
+            android:id="@+id/img2"
+            />
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rec_2"
+            android:layout_below="@id/img2"
+            android:layout_marginTop="10dp"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_below="@id/re_2"
+        android:id="@+id/re_3"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="即将上映"
+            android:textScaleX="25sp"
+            android:padding="5dp"
+            android:id="@+id/text3" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/Group2"
+            android:background="@drawable/qi"
+            android:layout_below="@id/text3"
+            android:scaleType="center"
+            android:id="@+id/img3"
+            />
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rec_3"
+            android:layout_below="@id/img3"
+            android:layout_marginTop="10dp"
+            />
+    </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
