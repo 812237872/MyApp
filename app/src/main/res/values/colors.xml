@@ -3,4 +3,6 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="TabLayout_check">#D01658</color>
+    <color name="TabLayout_fals">#FFFFFF</color>
 </resources>

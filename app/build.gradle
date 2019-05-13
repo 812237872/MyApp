@@ -46,4 +46,7 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+
+    //TableLayout需要的插件
+    implementation 'com.android.support:design:28.0.0'
 }
