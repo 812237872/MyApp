@@ -3,13 +3,16 @@
 
     <item android:state_checked="true">
         <layer-list>
-            <item>
+            <item >
                 <shape>
                     <corners
                         android:bottomLeftRadius="40dp"
                         android:bottomRightRadius="40dp"
                         android:topLeftRadius="40dp"
                         android:topRightRadius="40dp" />
+
+
+
                     <solid android:color="@color/TabLayout_check" />
                 </shape>
             </item>
