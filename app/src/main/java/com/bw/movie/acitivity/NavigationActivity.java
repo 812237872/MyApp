@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 
 public class NavigationActivity extends AppCompatActivity {
 
-    public static int flag=1;
+    public static int flag1=1;
     @BindView(R.id.navigation_ViewPager)
     android.support.v4.view.ViewPager ViewPager;
     @BindView(R.id.navigation_but_1)
@@ -52,34 +52,30 @@ public class NavigationActivity extends AppCompatActivity {
         list.add(R.drawable.three);
         list.add(R.drawable.four);
 
-<<<<<<< HEAD
-        if(flag==2){
+
+        if(flag1==2){
             Intent intent = new Intent(NavigationActivity.this,MainActivity.class);
             startActivity(intent);
             finish();
         }
         NavigationAdapter adapter = new NavigationAdapter(NavigationActivity.this,list);
         ViewPager.setAdapter(adapter);
-=======
+
         inif = getSharedPreferences("inif", MODE_PRIVATE);
-        boolean flag = inif.getBoolean("flag", false);
+        final boolean flag = inif.getBoolean("flag", false);
         if (flag){
             Intent intent = new Intent(NavigationActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
         }else {
-            NavigationAdapter adapter = new NavigationAdapter(NavigationActivity.this,list);
-            ViewPager.setAdapter(adapter);
->>>>>>> 16e5ca9df68e86e8b51ea29ed7608117b946b083
-
-
+            NavigationAdapter adapter1 = new NavigationAdapter(NavigationActivity.this,list);
+            ViewPager.setAdapter(adapter1);
 
             ViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int i, float v, int i1) {
 
                 }
-
                 @Override
                 public void onPageSelected(int i) {
                     if (list.size() -1 == i){
@@ -108,27 +104,17 @@ public class NavigationActivity extends AppCompatActivity {
                 public void onPageScrollStateChanged(int i) {
 
                 }
-<<<<<<< HEAD
-                RadioGroup.check(RadioGroup.getChildAt(i).getId());
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
+            });
 
         Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(NavigationActivity.this,MainActivity.class);
                 startActivity(intent);
-                flag=2;
+                flag1=2;
                 finish();
             }
         });
-=======
-            });
 
             Button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -140,14 +126,8 @@ public class NavigationActivity extends AppCompatActivity {
                     Intent intent = new Intent(NavigationActivity.this,LoginActivity.class);
                     startActivity(intent);
                     finish();
-
-
                 }
             });
         }
-
-
->>>>>>> 16e5ca9df68e86e8b51ea29ed7608117b946b083
-
     }
 }
