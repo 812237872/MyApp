@@ -20,10 +20,14 @@ public class MyModel {
 
     MyLogin myLogin ;
     MyRegister myRegister ;
+    private final RetrofitUtil util;
+    private final Api api;
 
+    public MyModel(){
+        util = RetrofitUtil.getIntsetn();
+        api = util.getRetrofit(Api.class);
+    }
     public void mToLogin(String phone , String pwd , String pwd2){
-        RetrofitUtil util = RetrofitUtil.getIntsetn();
-        Api api = util.getRetrofit(Api.class);
         api.getLogin(phone,pwd,pwd2)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -43,8 +47,6 @@ public class MyModel {
     }
 
     public void mToRegister(String nickName,int sex,String birthday,String phone,String email,String pwd,String pwd2){
-        RetrofitUtil util = RetrofitUtil.getIntsetn();
-        Api api=util.getRetrofit(Api.class);
         api.getRegister(nickName,sex,birthday,phone,email,pwd,pwd2)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -64,6 +66,9 @@ public class MyModel {
                 });
     }
 
+    public void getHotMove(){
+
+    }
     public void setMyRegister(MyRegister register){
         myRegister = register ;
     }

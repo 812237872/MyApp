@@ -3,6 +3,8 @@ package com.bw.movie.util;
 import okhttp3.ResponseBody;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -18,4 +20,6 @@ public interface Api {
                 @Field("birthday") String birthday , @Field("phone") String phone,
                 @Field("email") String email , @Field("pwd") String pwd, @Field("pwd2") String pwd2);
 
+    @GET
+    Observable<ResponseBody> getMove(@Header("userId") int userId,@Header("sessionId") String session,@Query("page") int page,@Query("count") int count);
 }
