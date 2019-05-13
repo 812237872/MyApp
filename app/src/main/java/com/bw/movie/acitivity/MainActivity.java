@@ -13,7 +13,7 @@ import com.bw.movie.view.LoginActivity;
 public class MainActivity extends AppCompatActivity {
 
     private ImageView imageView;
-    int i = 5 ;
+    int i = 1 ;
 
     Handler handler = new Handler(){
         @Override
