@@ -16,7 +16,7 @@
             android:layout_width="@dimen/dp_48"
             android:layout_height="@dimen/dp_48"
             android:padding="@dimen/dp_15"
-            android:src="@mipmap/cinema_detail"/>
+            android:src="@mipmap/cinemadetail_icon_location_default_hdpi"/>
 
         <TextView
             android:paddingTop="@dimen/dp_8"
@@ -52,7 +52,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:paddingLeft="6dp"
-                android:src="@mipmap/icon_search" />
+                android:src="@mipmap/com_icon_search_default_hdpi" />
 
             <EditText
                 android:id="@+id/search_edname"

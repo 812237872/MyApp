@@ -10,11 +10,18 @@ public interface ContractInterface {
     public interface RegisterInterface{
         public void showRegister(Object object);
     }
+    //展示页面
+    public interface ShowInterface{
+        public void showHotMove(Object o);
+    }
+
 
     //P层接口
     public interface PresenterInterface{
         public void pToLogin(String phone , String pwd , String pwd2);
         public void pToRegister(String nickName,int sex,String birthday,String phone,String email,String pwd,String pwd2);
+        public void toHotMove();
+        public void onDestroy();
     }
 
 }

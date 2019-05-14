@@ -13,17 +13,9 @@
         android:background="@drawable/hdpi2"
 
         />
-    <ImageView
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/cinemadetail_icon_location_default_hdpi"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="5dp"
-        android:padding="6dp"
-        />
     <com.bw.movie.view.MyViews
-        android:layout_width="50dp"
-        android:layout_height="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
         android:padding="6dp"
         android:layout_alignParentRight="true"
         android:layout_marginTop="25dp"
@@ -46,14 +38,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="热门电影"
-            android:textScaleX="25sp"
+            android:textSize="20sp"
             android:padding="5dp"
             android:id="@+id/text1" />
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:src="@mipmap/Group2"
+            android:src="@mipmap/group2"
             android:background="@drawable/qi"
             android:layout_below="@id/text1"
             android:scaleType="center"
@@ -78,14 +70,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="正在热映"
-            android:textScaleX="25sp"
+            android:textSize="20sp"
             android:padding="5dp"
             android:id="@+id/text2" />
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:src="@mipmap/Group2"
+            android:src="@mipmap/group2"
             android:background="@drawable/qi"
             android:layout_below="@id/text2"
             android:scaleType="center"
@@ -110,14 +102,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="即将上映"
-            android:textScaleX="25sp"
+            android:textSize="20sp"
             android:padding="5dp"
             android:id="@+id/text3" />
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:src="@mipmap/Group2"
+            android:src="@mipmap/group2"
             android:background="@drawable/qi"
             android:layout_below="@id/text3"
             android:scaleType="center"
