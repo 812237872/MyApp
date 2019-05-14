@@ -11,15 +11,18 @@ import android.view.ViewGroup;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.RecommendAdapter;
+import com.bw.movie.cont.ContractInterface;
+import com.bw.movie.presenter.MyPresenter;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CinemaRecommend extends Fragment {
+public class CinemaRecommend extends Fragment implements ContractInterface.CinemaRecommend {
 
     private XRecyclerView xRecyclerView;
     List<String> list = new ArrayList<>();
+    private ContractInterface.PresenterInterface presenterInterface;
 
     @Nullable
     @Override
@@ -42,15 +45,29 @@ public class CinemaRecommend extends Fragment {
         RecommendAdapter adapter = new RecommendAdapter(getActivity());
         xRecyclerView.setAdapter(adapter);
 
+        final String sessionId = LoginActivity.sessionId;
+        final int userId = LoginActivity.userId;
+        final int count = 10 ;
+
+        presenterInterface = new MyPresenter<>(this);
+        presenterInterface.pToRecommend(userId,sessionId,1,count);
+
         xRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-
+                presenterInterface.pToRecommend(userId,sessionId,1,count);
             }
+            int i = 1;
             @Override
             public void onLoadMore() {
-
+                i++;
+                presenterInterface.pToRecommend(userId,sessionId,i,count);
             }
         });
+    }
+
+    @Override
+    public void showRecommend(Object object) {
+
     }
 }

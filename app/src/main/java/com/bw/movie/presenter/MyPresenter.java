@@ -45,5 +45,12 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.mToRegister(nickName,sex,birthday,phone,email,pwd,pwd2);
     }
+    //推荐影院
+    @Override
+    public void pToRecommend(int userId, String sessionId, int page,int count) {
+
+
+        myModel.mToRecommend(userId,sessionId,page,count);
+    }
 
 }

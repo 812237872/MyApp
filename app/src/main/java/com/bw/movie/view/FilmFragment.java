@@ -17,7 +17,7 @@ public class FilmFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_film, null);
-        recyclerCoverFlow=view.findViewById(R.id.rcf_cinema_flow);
+        //recyclerCoverFlow=view.findViewById(R.id.rcf_cinema_flow);
         return view;
     }
 

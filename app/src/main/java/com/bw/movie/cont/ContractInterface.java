@@ -11,10 +11,20 @@ public interface ContractInterface {
         public void showRegister(Object object);
     }
 
+    //推荐影院
+    public interface CinemaRecommend{
+        public void showRecommend(Object object);
+    }
+
+
     //P层接口
     public interface PresenterInterface{
+        //登录
         public void pToLogin(String phone , String pwd , String pwd2);
+        //注册
         public void pToRegister(String nickName,int sex,String birthday,String phone,String email,String pwd,String pwd2);
+        //推荐影院
+        public void pToRecommend(int userId,String sessionId,int page,int count);
     }
 
 }
