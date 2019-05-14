@@ -12,6 +12,8 @@ import com.bw.movie.view.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    //0513_19:57
     private ImageView imageView;
     int i = 1 ;
 
