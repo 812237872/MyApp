@@ -53,4 +53,25 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         myModel.mToRecommend(userId,sessionId,page,count);
     }
 
+    @Override
+    public void toHotMove() {
+        myModel.setMyRegister(new MyModel.MyRegister() {
+            @Override
+            public void Succeed(Object object) {
+                ContractInterface.ShowInterface showInterface= (ContractInterface.ShowInterface) tt;
+                showInterface.showHotMove(object);
+            }
+            @Override
+            public void error(Object object) {
+
+            }
+        });
+        myModel.getHotMove();
+    }
+
+    @Override
+    public void onDestroy() {
+
+    }
+
 }

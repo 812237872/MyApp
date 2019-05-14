@@ -2,10 +2,13 @@ package com.bw.movie.model;
 
 import android.util.Log;
 
+import com.bw.movie.bean.HotMoveBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.util.Api;
 import com.bw.movie.util.RetrofitUtil;
+import com.bw.movie.util.UriCl;
+import com.bw.movie.view.LoginActivity;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -67,6 +70,7 @@ public class MyModel {
                     }
                 });
     }
+<<<<<<< HEAD
     ///推荐影院
     public void mToRecommend(int userId, String sessionId, int page,int count){
         api.getRecommend(page,count,userId,sessionId)
@@ -87,6 +91,26 @@ public class MyModel {
                     }
                 });
 
+=======
+
+    public void getHotMove(){
+        api.getMove(UriCl.hotMove,LoginActivity.userId,LoginActivity.sessionId,1,5)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Action1<ResponseBody>() {
+            @Override
+            public void call(ResponseBody responseBody) {
+                try {
+                    String s = responseBody.string();
+                    Gson gson=new Gson();
+                    HotMoveBean hotMoveBean = gson.fromJson(s, HotMoveBean.class);
+                    myRegister.Succeed(hotMoveBean);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+>>>>>>> dda8be0a3cd812ad7b8bbf7ee53003d9577733e4
     }
 
 

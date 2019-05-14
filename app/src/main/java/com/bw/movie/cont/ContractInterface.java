@@ -10,6 +10,11 @@ public interface ContractInterface {
     public interface RegisterInterface{
         public void showRegister(Object object);
     }
+    //展示页面
+    public interface ShowInterface{
+        public void showHotMove(Object o);
+    }
+
 
     //推荐影院
     public interface CinemaRecommend{
@@ -23,8 +28,13 @@ public interface ContractInterface {
         public void pToLogin(String phone , String pwd , String pwd2);
         //注册
         public void pToRegister(String nickName,int sex,String birthday,String phone,String email,String pwd,String pwd2);
+<<<<<<< HEAD
         //推荐影院
         public void pToRecommend(int userId,String sessionId,int page,int count);
+=======
+        public void toHotMove();
+        public void onDestroy();
+>>>>>>> dda8be0a3cd812ad7b8bbf7ee53003d9577733e4
     }
 
 }

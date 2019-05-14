@@ -7,6 +7,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.Url;
 import rx.Observable;
 import rx.Observer;
 
@@ -28,6 +29,17 @@ public interface Api {
             getRecommend(@Query("page")int page,@Query("count")int count,
                          @Header("userId")int userId,@Header("sessionId")String sessionId);
 
+<<<<<<< HEAD
     @GET("")
     Observable<ResponseBody> getMove(@Header("userId") int userId,@Header("sessionId") String session,@Query("page") int page,@Query("count") int count);
+=======
+=======
+    @GET
+<<<<<<< HEAD
+    Observable<ResponseBody> getMove(@Url String url, @Header("userId") int userId, @Header("sessionId") String session, @Query("page") int page, @Query("count") int count);
+=======
+    Observable<ResponseBody> getMove(@Header("userId") int userId,@Header("sessionId") String session,@Query("page") int page,@Query("count") int count);
+>>>>>>> 95bd68f8d3962ca8021ded663aa17507b3f50865
+>>>>>>> ddfbf0f0b1aae1285561eb8f6821d0bdedef6d5a
+>>>>>>> dda8be0a3cd812ad7b8bbf7ee53003d9577733e4
 }
