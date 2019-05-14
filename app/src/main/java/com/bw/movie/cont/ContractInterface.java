@@ -13,6 +13,8 @@ public interface ContractInterface {
     //展示页面
     public interface ShowInterface{
         public void showHotMove(Object o);
+        public void showMoving(Object o);
+        public void showMoveCom(Object o);
     }
 
 
@@ -21,6 +23,8 @@ public interface ContractInterface {
         public void pToLogin(String phone , String pwd , String pwd2);
         public void pToRegister(String nickName,int sex,String birthday,String phone,String email,String pwd,String pwd2);
         public void toHotMove();
+        public void toMoving();
+        public void toMoveCom();
         public void onDestroy();
     }
 

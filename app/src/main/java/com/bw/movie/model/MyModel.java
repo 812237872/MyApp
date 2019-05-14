@@ -1,9 +1,7 @@
 package com.bw.movie.model;
 
-import android.util.Log;
-
-import com.bw.movie.bean.HotMoveBean;
-import com.bw.movie.bean.LoginBean;
+import com.bw.movie.bean.hotmove.HotMoveBean;
+import com.bw.movie.bean.user.LoginBean;
 import com.bw.movie.util.Api;
 import com.bw.movie.util.RetrofitUtil;
 import com.bw.movie.util.UriCl;
@@ -23,6 +21,7 @@ public class MyModel {
 
     MyLogin myLogin ;
     MyRegister myRegister ;
+    MyMoveCom myMoveCom;
     private final RetrofitUtil util;
     private final Api api;
 
@@ -87,6 +86,42 @@ public class MyModel {
             }
         });
     }
+    public void getMoving(){
+        api.getMove(UriCl.moving,LoginActivity.userId,LoginActivity.sessionId,1,5)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String s = responseBody.string();
+                            Gson gson=new Gson();
+                            HotMoveBean hotMoveBean = gson.fromJson(s, HotMoveBean.class);
+                            myLogin.Succeed(hotMoveBean);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+    public void getMoveCom(){
+        api.getMove(UriCl.moveCom,LoginActivity.userId,LoginActivity.sessionId,1,5)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String s = responseBody.string();
+                            Gson gson=new Gson();
+                            HotMoveBean hotMoveBean = gson.fromJson(s, HotMoveBean.class);
+                            myMoveCom.Succeed(hotMoveBean);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
     public void setMyRegister(MyRegister register){
         myRegister = register ;
     }
@@ -101,5 +136,11 @@ public class MyModel {
     public interface MyLogin{
         public void Succeed(Object object);
         public void error(Object object);
+    }
+    public void setMyMoveCom(MyMoveCom com){
+        myMoveCom = com ;
+    }
+    public interface MyMoveCom{
+        public void Succeed(Object o);
     }
 }

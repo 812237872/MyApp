@@ -63,8 +63,38 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
     }
 
     @Override
-    public void onDestroy() {
+    public void toMoving() {
+        myModel.setMyLogin(new MyModel.MyLogin() {
+            @Override
+            public void Succeed(Object o) {
+                ContractInterface.ShowInterface showInterface= (ContractInterface.ShowInterface) tt;
+                showInterface.showMoving(o);
+            }
+            @Override
+            public void error(Object object) {
 
+            }
+        });
+        myModel.getMoving();
+    }
+
+    @Override
+    public void toMoveCom() {
+        myModel.setMyMoveCom(new MyModel.MyMoveCom() {
+            @Override
+            public void Succeed(Object o) {
+                ContractInterface.ShowInterface showInterface= (ContractInterface.ShowInterface) tt;
+                showInterface.showMoveCom(o);
+            }
+        });
+        myModel.getMoveCom();
+    }
+
+    @Override
+    public void onDestroy() {
+        if(tt!=null){
+            tt=null;
+        }
     }
 
 }

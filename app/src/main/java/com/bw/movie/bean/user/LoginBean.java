@@ -1,4 +1,4 @@
-package com.bw.movie.bean;
+package com.bw.movie.bean.user;
 
 public class LoginBean {
 

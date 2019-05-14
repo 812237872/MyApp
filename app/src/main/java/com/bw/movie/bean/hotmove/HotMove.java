@@ -1,4 +1,4 @@
-package com.bw.movie.bean;
+package com.bw.movie.bean.hotmove;
 
 public class HotMove {
     public boolean followMovie;
@@ -7,14 +7,16 @@ public class HotMove {
     public String imageUrl;
     public String name;
     public String summary;
+    public String releaseTimeShow;
 
-    public HotMove(boolean followMovie, int id, int rank, String imageUrl, String name, String summary) {
+    public HotMove(boolean followMovie, int id, int rank, String imageUrl, String name, String summary, String releaseTimeShow) {
         this.followMovie = followMovie;
         this.id = id;
         this.rank = rank;
         this.imageUrl = imageUrl;
         this.name = name;
         this.summary = summary;
+        this.releaseTimeShow = releaseTimeShow;
     }
 
     public boolean isFollowMovie() {
@@ -65,6 +67,14 @@ public class HotMove {
         this.summary = summary;
     }
 
+    public String getReleaseTimeShow() {
+        return releaseTimeShow;
+    }
+
+    public void setReleaseTimeShow(String releaseTimeShow) {
+        this.releaseTimeShow = releaseTimeShow;
+    }
+
     @Override
     public String toString() {
         return "HotMove{" +
@@ -74,6 +84,7 @@ public class HotMove {
                 ", imageUrl='" + imageUrl + '\'' +
                 ", name='" + name + '\'' +
                 ", summary='" + summary + '\'' +
+                ", releaseTimeShow='" + releaseTimeShow + '\'' +
                 '}';
     }
 }
