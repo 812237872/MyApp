@@ -36,6 +36,9 @@ public class CinemaFlowAdapter extends RecyclerView.Adapter<CinemaFlowAdapter.Vi
 
     @Override
     public int getItemCount() {
+        if(list!=null){
+            return list.size();
+        }
         return 0;
     }
 
