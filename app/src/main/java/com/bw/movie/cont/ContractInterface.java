@@ -19,6 +19,20 @@ public interface ContractInterface {
     //推荐影院
     public interface CinemaRecommend{
         public void showRecommend(Object object);
+        public void showAttention(Object object);
+        public void showNotAttention(Object object);
+    }
+
+    //附近影院
+    public interface CinemaNearby{
+        public void showNearby(Object object);
+        public void showAttention(Object object);
+        public void showNotAttention(Object object);
+    }
+
+    //影院详情页面
+    public interface CinemaDetails{
+        public void showDetails(Object object);
     }
 
 
@@ -28,13 +42,28 @@ public interface ContractInterface {
         public void pToLogin(String phone , String pwd , String pwd2);
         //注册
         public void pToRegister(String nickName,int sex,String birthday,String phone,String email,String pwd,String pwd2);
-<<<<<<< HEAD
         //推荐影院
         public void pToRecommend(int userId,String sessionId,int page,int count);
-=======
+        //附近影院
+        public void pToNearby(int userId,String sessionId,int page,int count);
+        //影院详情页面
+        public void pToDetails(int cinemaId);
+
         public void toHotMove();
         public void onDestroy();
->>>>>>> dda8be0a3cd812ad7b8bbf7ee53003d9577733e4
+    }
+
+    //影院内部的接口调用
+    public interface CinemaInterface{
+        //关注
+        public void pToAttention(int id,int userId,String sessionId);
+        //不关注
+        public void pToNotAttention(int id,int userId,String sessionId);
+
+        //关注
+        public void pToRAttention(int id,int userId,String sessionId);
+        //不关注
+        public void pToRNotAttention(int id,int userId,String sessionId);
     }
 
 }

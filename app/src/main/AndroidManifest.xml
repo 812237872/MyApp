@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bw.movie">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".view.App"
@@ -12,10 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".acitivity.MainActivity">
-
-        </activity>
-        <activity android:name=".acitivity.NavigationActivity" >
+        <activity android:name=".acitivity.MainActivity"></activity>
+        <activity android:name=".acitivity.NavigationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +22,8 @@
         </activity>
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.RegisterActivity" />
-        <activity android:name=".view.ShowActivity"></activity>
+        <activity android:name=".view.ShowActivity" />
+        <activity android:name=".view.CinemaDetailsActivity"></activity>
     </application>
 
 </manifest>

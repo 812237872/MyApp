@@ -1,5 +1,6 @@
 package com.bw.movie.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,10 +9,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.RecommendAdapter;
+import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.cont.ContractInterface;
+import com.bw.movie.presenter.CinemaPresenter;
 import com.bw.movie.presenter.MyPresenter;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -21,8 +25,11 @@ import java.util.List;
 public class CinemaRecommend extends Fragment implements ContractInterface.CinemaRecommend {
 
     private XRecyclerView xRecyclerView;
-    List<String> list = new ArrayList<>();
+    List<RecommendBean.ResultBean> list = new ArrayList<>();
     private ContractInterface.PresenterInterface presenterInterface;
+    private ContractInterface.CinemaInterface cinemaInterface ;
+    private RecommendAdapter adapter;
+
 
     @Nullable
     @Override
@@ -42,7 +49,7 @@ public class CinemaRecommend extends Fragment implements ContractInterface.Cinem
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         xRecyclerView.setLayoutManager(linearLayoutManager);
 
-        RecommendAdapter adapter = new RecommendAdapter(getActivity());
+        adapter = new RecommendAdapter(getActivity(),list);
         xRecyclerView.setAdapter(adapter);
 
         final String sessionId = LoginActivity.sessionId;
@@ -50,6 +57,8 @@ public class CinemaRecommend extends Fragment implements ContractInterface.Cinem
         final int count = 10 ;
 
         presenterInterface = new MyPresenter<>(this);
+        //关注
+        cinemaInterface = new CinemaPresenter<>(this);
         presenterInterface.pToRecommend(userId,sessionId,1,count);
 
         xRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
@@ -64,10 +73,51 @@ public class CinemaRecommend extends Fragment implements ContractInterface.Cinem
                 presenterInterface.pToRecommend(userId,sessionId,i,count);
             }
         });
+
+        adapter.setOnItemClickListener(new RecommendAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, boolean ck) {
+                if (ck){
+                    cinemaInterface.pToRAttention(position,userId,sessionId);
+                }else {
+                    cinemaInterface.pToRNotAttention(position,userId,sessionId);
+                }
+            }
+        });
+        adapter.setOnItemLinearClickListener(new RecommendAdapter.OnItemLinearClickListener() {
+            @Override
+            public void onItemClick(int position, String name, String address,String logo) {
+                Toast.makeText(getActivity(),"点击",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(),CinemaDetailsActivity.class);
+                intent.putExtra("cinemaId",position);
+                intent.putExtra("name",name);
+                intent.putExtra("address",address);
+                intent.putExtra("logo",logo);
+                startActivity(intent);
+            }
+
+        });
+
+
+
     }
 
     @Override
     public void showRecommend(Object object) {
+        xRecyclerView.loadMoreComplete();
+        xRecyclerView.refreshComplete();
+        List<RecommendBean.ResultBean> resultBeans = (List<RecommendBean.ResultBean>) object;
+        list.addAll(resultBeans);
+        adapter.notifyDataSetChanged();
 
+    }
+
+    @Override
+    public void showAttention(Object object) {
+        Toast.makeText(getActivity(),"关注："+object,Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void showNotAttention(Object object) {
+        Toast.makeText(getActivity(),"不关注："+object,Toast.LENGTH_SHORT).show();
     }
 }

@@ -15,12 +15,7 @@
             android:id="@+id/dingwei"
             android:layout_width="@dimen/dp_48"
             android:layout_height="@dimen/dp_48"
-<<<<<<< HEAD
             android:padding="@dimen/dp_15"/>
-=======
-            android:padding="@dimen/dp_15"
-            android:src="@mipmap/cinemadetail_icon_location_default_hdpi"/>
->>>>>>> dda8be0a3cd812ad7b8bbf7ee53003d9577733e4
 
         <TextView
             android:paddingTop="@dimen/dp_8"
@@ -54,12 +49,7 @@
                 android:id="@+id/search_image"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-<<<<<<< HEAD
                 android:paddingLeft="6dp" />
-=======
-                android:paddingLeft="6dp"
-                android:src="@mipmap/com_icon_search_default_hdpi" />
->>>>>>> dda8be0a3cd812ad7b8bbf7ee53003d9577733e4
 
             <EditText
                 android:id="@+id/search_edname"
