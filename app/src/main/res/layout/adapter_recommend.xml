@@ -12,8 +12,8 @@
     <LinearLayout
         android:id="@+id/RecommendAdapter_LinearLayout"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_marginBottom="30dp"
+        android:layout_height="125dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal"
         android:elevation="5dp"
         android:background="@drawable/shape_recommendadapter">
@@ -21,6 +21,7 @@
             android:id="@+id/RecommendAdapter_SimpleDraweeView"
             android:layout_width="70dp"
             android:layout_height="70dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,7 +41,7 @@
             <RelativeLayout
                 android:layout_width="410dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="20dp">
                 <TextView
                     android:id="@+id/RecommendAdapter_distance"
                     android:layout_width="wrap_content"
@@ -51,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="50dp"
+                    android:layout_marginRight="180dp"
                     android:button="@null"
                     android:background="@drawable/selector_recommend"/>
             </RelativeLayout>

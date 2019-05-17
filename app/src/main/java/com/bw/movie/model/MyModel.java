@@ -2,7 +2,10 @@ package com.bw.movie.model;
 
 import android.util.Log;
 
+import com.bw.movie.bean.DetailsFragmentBean;
 import com.bw.movie.bean.DetailsBean;
+import com.bw.movie.bean.EvaluateFragmentBean;
+import com.bw.movie.bean.FlowBean;
 import com.bw.movie.bean.HotMoveBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.NearbyBean;
@@ -35,6 +38,12 @@ public class MyModel {
     MyNotAttention myNotAttention;
 //影院详情页
     MyDetails myDetails;
+    //影院轮播图
+    setMyFlow setMyFlow ;
+    //影院详情页详情
+    setDetailsFragment setDetailsFragment;
+    setEvaluateFragment setEvaluateFragment ;
+    setEvaluateFragmentGreat setEvaluateFragmentGreat ;
 
     private final RetrofitUtil util;
     private final Api api;
@@ -166,8 +175,8 @@ public class MyModel {
     }
 
     //影院详情页
-    public void mToDetails(int cinemaId){
-        api.getDetails(cinemaId)
+    public void mToDetails(int cinemaId,int movieId){
+        api.getDetails(cinemaId,movieId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<ResponseBody>() {
@@ -179,6 +188,92 @@ public class MyModel {
                             Gson gson = new Gson();
                             DetailsBean detailsBean = gson.fromJson(string, DetailsBean.class);
                             myDetails.Succeed(detailsBean);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+    //影院详情萝卜图
+    public void mToFlow(int cinemaId){
+        api.getFlow(cinemaId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"错误+i"+string);
+                            Gson gsond = new Gson();
+                            FlowBean flowBean = gsond.fromJson(string, FlowBean.class);
+                            setMyFlow.Succeed(flowBean);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+    //影院详情页详情
+    public void mToDetailsFragment(int cinemaId){
+        api.getDetailsFragment(cinemaId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"详情"+string);
+                            Gson gson = new Gson();
+                            DetailsFragmentBean detailsFragmentBean = gson.fromJson(string, DetailsFragmentBean.class);
+                            setDetailsFragment.Succeed(detailsFragmentBean);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+    //影院详情页评论
+    public void mToEvaluateFragment(int cinemaId,int page ,int count){
+        api.getEvaluateFragment(cinemaId, page, count)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"评论"+string);
+                            Gson gson = new Gson();
+                            EvaluateFragmentBean evaluateFragmentBean = gson.fromJson(string, EvaluateFragmentBean.class);
+                            setEvaluateFragment.Succeed(evaluateFragmentBean);
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+
+    //影院详情页评论点赞
+    public void mToEvaluateFragmenGreat(int userId,String sessionId,int commentId){
+        Log.e("a123", "mToEvaluateFragmenGreat: "+userId+"-----"+sessionId+"-----"+commentId);
+        api.getgetEvaluateFragmentGreat(commentId, userId, sessionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"额详情"+string);
+                            JSONObject jsonObject = new JSONObject(string);
+                            String message = jsonObject.getString("message");
+                            Log.e("a123", "call: "+message.toString() );
+                            setEvaluateFragmentGreat.Succeed(message);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -267,6 +362,40 @@ public class MyModel {
         myDetails = details ;
     }
     public interface MyDetails{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
+
+    //影院轮播
+    public void setSetMyFlow(setMyFlow flow){
+        setMyFlow = flow ;
+    }
+    public interface setMyFlow{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
+
+    //影院详情页详情
+    public void setSetDetailsFragment(setDetailsFragment fragment){
+        setDetailsFragment = fragment;
+    }
+    public interface setDetailsFragment{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
+    //影院详情页评论
+    public void setSetEvaluateFragment(setEvaluateFragment fragment){
+        setEvaluateFragment = fragment;
+    }
+    public interface setEvaluateFragment{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
+    //影院详情页评论点赞
+    public void setSetEvaluateFragmentGreat(setEvaluateFragmentGreat great){
+        setEvaluateFragmentGreat = great ;
+    }
+    public interface setEvaluateFragmentGreat{
         public void Succeed(Object object);
         public void error(Object object);
     }

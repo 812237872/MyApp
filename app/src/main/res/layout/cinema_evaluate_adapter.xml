@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="2dp"
+        android:background="#fff"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/cinema_evaluate_adapter_SimpleDraweeView"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/cinema_evaluate_adapter_name"
+                android:text="asda "
+                android:layout_marginTop="40dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cinema_evaluate_adapter_commentContent"
+                    />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="34dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cinema_evaluate_adapter_time"/>
+            <CheckBox
+                android:id="@+id/cinema_evaluate_adapter_ck"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:button="@null"
+                android:background="@drawable/selector_evaluate_adapter"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="70dp"/>
+            <TextView
+                android:id="@+id/cinema_evaluate_adapter_zhan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="1231"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="7dp"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -33,6 +33,17 @@ public interface ContractInterface {
     //影院详情页面
     public interface CinemaDetails{
         public void showDetails(Object object);
+        public void showFlow(Object object);
+    }
+    //影院详情页详情
+    public interface CinemaDetailsFragment{
+        public void showDetailsFragment(Object object);
+    }
+    //影院详情页评论
+    public interface CinemaEvaluateFragment{
+        public void showEvaluateFragment(Object object);
+
+        public void showEvaluateFragmentGreat(Object object);
     }
 
 
@@ -47,7 +58,16 @@ public interface ContractInterface {
         //附近影院
         public void pToNearby(int userId,String sessionId,int page,int count);
         //影院详情页面
-        public void pToDetails(int cinemaId);
+        public void pToDetails(int cinemaId,int movield);
+        //影院轮播图
+        public void pToFlow(int cinemaId);
+        //详情页面详情
+        public void pToDetailsFragment(int cinemaId);
+        //详情页面评论
+        public void pToEvaluateFragment(int cinemaId,int page ,int count);
+        //详情页面评论点赞
+        public void pToEvaluateFragmentGreat(int userId,String sessionId,int commentId);
+
 
         public void toHotMove();
         public void onDestroy();

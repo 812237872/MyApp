@@ -4,9 +4,8 @@ import java.util.List;
 
 public class DetailsBean {
 
-
     /**
-     * result : [{"duration":"118分钟","fare":0.13,"id":3,"imageUrl":"http://172.17.8.100/images/movie/stills/xhssf/xhssf1.jpg","name":"西虹市首富","releaseTime":1564156800000,"summary":"故事发生在《夏洛特烦恼》中的\u201c特烦恼\u201d之城\u201c西虹市\u201d。混迹于丙级业余足球队的守门员王多鱼（沈腾 饰），因比赛失利被开除离队。正处于人生最低谷的他接受了神秘台湾财团\u201c一个月花光十亿资金\u201d的挑战。本以为快乐生活就此开始，王多鱼却第一次感到\u201c花钱特烦恼\u201d！想要人生反转走上巅峰，真的没有那么简单."},{"duration":"102分钟","fare":0.12,"id":2,"imageUrl":"http://172.17.8.100/images/movie/stills/mtyj/mtyj1.jpg","name":"摩天营救","releaseTime":1563552000000,"summary":"在香港市中心，世界上最高、结构最复杂的摩天大楼遭到破坏，危机一触即发。威尔·索耶（道恩·强森 饰）的妻子萨拉（内芙·坎贝尔 饰）和孩子们在98层被劫为人质，直接暴露在火线上。威尔，这位战争英雄、前联邦调查局救援队员，作为大楼的安保顾问，却被诬陷纵火和谋杀。他必须奋力营救家人，为自己洗脱罪名，关乎生死存亡的高空任务就此展开。"}]
+     * result : [{"beginTime":"18:50","duration":"137分钟","endTime":"20:15","id":35,"price":0.18,"screeningHall":"5号厅","seatsTotal":170,"seatsUseCount":70,"status":2}]
      * message : 查询成功
      * status : 0000
      */
@@ -41,22 +40,34 @@ public class DetailsBean {
 
     public static class ResultBean {
         /**
-         * duration : 118分钟
-         * fare : 0.13
-         * id : 3
-         * imageUrl : http://172.17.8.100/images/movie/stills/xhssf/xhssf1.jpg
-         * name : 西虹市首富
-         * releaseTime : 1564156800000
-         * summary : 故事发生在《夏洛特烦恼》中的“特烦恼”之城“西虹市”。混迹于丙级业余足球队的守门员王多鱼（沈腾 饰），因比赛失利被开除离队。正处于人生最低谷的他接受了神秘台湾财团“一个月花光十亿资金”的挑战。本以为快乐生活就此开始，王多鱼却第一次感到“花钱特烦恼”！想要人生反转走上巅峰，真的没有那么简单.
+         * beginTime : 18:50
+         * duration : 137分钟
+         * endTime : 20:15
+         * id : 35
+         * price : 0.18
+         * screeningHall : 5号厅
+         * seatsTotal : 170
+         * seatsUseCount : 70
+         * status : 2
          */
 
+        private String beginTime;
         private String duration;
-        private double fare;
+        private String endTime;
         private int id;
-        private String imageUrl;
-        private String name;
-        private long releaseTime;
-        private String summary;
+        private double price;
+        private String screeningHall;
+        private int seatsTotal;
+        private int seatsUseCount;
+        private int status;
+
+        public String getBeginTime() {
+            return beginTime;
+        }
+
+        public void setBeginTime(String beginTime) {
+            this.beginTime = beginTime;
+        }
 
         public String getDuration() {
             return duration;
@@ -66,12 +77,12 @@ public class DetailsBean {
             this.duration = duration;
         }
 
-        public double getFare() {
-            return fare;
+        public String getEndTime() {
+            return endTime;
         }
 
-        public void setFare(double fare) {
-            this.fare = fare;
+        public void setEndTime(String endTime) {
+            this.endTime = endTime;
         }
 
         public int getId() {
@@ -82,36 +93,44 @@ public class DetailsBean {
             this.id = id;
         }
 
-        public String getImageUrl() {
-            return imageUrl;
+        public double getPrice() {
+            return price;
         }
 
-        public void setImageUrl(String imageUrl) {
-            this.imageUrl = imageUrl;
+        public void setPrice(double price) {
+            this.price = price;
         }
 
-        public String getName() {
-            return name;
+        public String getScreeningHall() {
+            return screeningHall;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setScreeningHall(String screeningHall) {
+            this.screeningHall = screeningHall;
         }
 
-        public long getReleaseTime() {
-            return releaseTime;
+        public int getSeatsTotal() {
+            return seatsTotal;
         }
 
-        public void setReleaseTime(long releaseTime) {
-            this.releaseTime = releaseTime;
+        public void setSeatsTotal(int seatsTotal) {
+            this.seatsTotal = seatsTotal;
         }
 
-        public String getSummary() {
-            return summary;
+        public int getSeatsUseCount() {
+            return seatsUseCount;
         }
 
-        public void setSummary(String summary) {
-            this.summary = summary;
+        public void setSeatsUseCount(int seatsUseCount) {
+            this.seatsUseCount = seatsUseCount;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
         }
     }
 }

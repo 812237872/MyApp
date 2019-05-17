@@ -7,39 +7,46 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:id="@+id/cinema_details_RelativeLayout"
         android:background="@drawable/cinema_details">
-        <ImageView
-            android:id="@+id/cinema_details_logo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="40dp"
-            />
-        <TextView
-            android:id="@+id/cinema_details_name"
+        <RelativeLayout
+            android:id="@+id/cinema_details_RelativeLayout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="姓名"
-            android:textColor="#fff"
-            android:layout_toRightOf="@+id/cinema_details_logo"
-            android:layout_marginTop="40dp"
-            />
-        <TextView
-            android:id="@+id/cinema_details_dress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="地址"
-            android:textColor="#fff"
-            android:layout_marginTop="30dp"
-            android:layout_toRightOf="@+id/cinema_details_logo"
-            android:layout_below="@+id/cinema_details_name"/>
+            android:layout_height="wrap_content">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/cinema_details_logo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="40dp"
+                />
+            <TextView
+                android:id="@+id/cinema_details_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名"
+                android:textColor="#fff"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/cinema_details_logo"
+                android:layout_marginTop="40dp"
+                />
+            <TextView
+                android:id="@+id/cinema_details_dress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地址"
+                android:textColor="#fff"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/cinema_details_logo"
+                android:layout_below="@+id/cinema_details_name"/>
+
+        </RelativeLayout>
         <ImageView
             android:id="@+id/cinema_details_navigation"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="40dp"
             android:background="@drawable/com_icon_navigation_default_hdpi"
             />
@@ -49,20 +56,78 @@
         android:id="@+id/cinema_details_RelativeLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp">
+        android:layout_marginTop="150dp">
         <recycler.coverflow.RecyclerCoverFlow
+            android:id="@+id/cinema_details_RecyclerCoverFlow"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:background="#AADDEF"></recycler.coverflow.RecyclerCoverFlow>
+            android:layout_height="400dp"></recycler.coverflow.RecyclerCoverFlow>
     </RelativeLayout>
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/cinema_details_RelativeLayout2"
+        android:gravity="center"
         >
-        <com.jcodecraeer.xrecyclerview.XRecyclerView
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="450dp"
+            android:layout_height="match_parent"
+            android:id="@+id/cinema_details_XRecyclerView"></android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/shape_cinema_RelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_cinema_details"
+        >
+        <RadioGroup
+            android:id="@+id/cinema_details_RadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp">
+            <RadioButton
+                android:id="@+id/cinema_details_Radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_cinema_radiogroup"
+                android:checked="true"
+                android:button="@null"
+                android:layout_marginRight="130dp"
+                android:textSize="18dp"
+                android:text="详情"/>
+            <RadioButton
+                android:id="@+id/cinema_details_Radio2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_cinema_radiogroup"
+                android:button="@null"
+                android:textSize="18dp"
+                android:text="评价"/>
+        </RadioGroup>
+        <FrameLayout
+            android:id="@+id/cinema_details_FrameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/cinema_details_XRecyclerView"></com.jcodecraeer.xrecyclerview.XRecyclerView>
+            android:layout_below="@+id/cinema_details_RadioGroup"></FrameLayout>
+        <ImageView
+            android:id="@+id/cinema_details_ImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/com_icon_down_default_hdpi"
+            android:layout_alignParentRight="true"
+            />
     </RelativeLayout>
+    <ImageView
+        android:id="@+id/cinema_details_return"
+        android:background="@drawable/com_icon_return_default_hdpi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"/>
 </RelativeLayout>
