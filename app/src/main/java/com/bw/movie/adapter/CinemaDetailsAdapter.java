@@ -55,6 +55,8 @@ public class CinemaDetailsAdapter extends RecyclerView.Adapter<CinemaDetailsAdap
         return list.size();
     }
 
+
+
     public class holder extends RecyclerView.ViewHolder {
         TextView price , name ,time ;
         ImageView imageView ;

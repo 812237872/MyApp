@@ -92,6 +92,12 @@ public class CinemaNearby extends Fragment implements ContractInterface.CinemaNe
         });
 
 
+        appss();
+
+    }
+
+    private void appss() {
+
     }
 
     @Override
