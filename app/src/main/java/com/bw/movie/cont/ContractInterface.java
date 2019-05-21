@@ -49,6 +49,31 @@ public interface ContractInterface {
     //推荐影院
     public interface CinemaRecommend{
         public void showRecommend(Object object);
+        public void showAttention(Object object);
+        public void showNotAttention(Object object);
+    }
+
+    //附近影院
+    public interface CinemaNearby{
+        public void showNearby(Object object);
+        public void showAttention(Object object);
+        public void showNotAttention(Object object);
+    }
+
+    //影院详情页面
+    public interface CinemaDetails{
+        public void showDetails(Object object);
+        public void showFlow(Object object);
+    }
+    //影院详情页详情
+    public interface CinemaDetailsFragment{
+        public void showDetailsFragment(Object object);
+    }
+    //影院详情页评论
+    public interface CinemaEvaluateFragment{
+        public void showEvaluateFragment(Object object);
+
+        public void showEvaluateFragmentGreat(Object object);
     }
 
 
@@ -58,9 +83,28 @@ public interface ContractInterface {
         public void pToLogin(String phone , String pwd , String pwd2);
         //注册
         public void pToRegister(String nickName,int sex,String birthday,String phone,String email,String pwd,String pwd2);
+<<<<<<< HEAD
 
         //推荐影院
         public void pToRecommend(int userId,String sessionId,int page,int count);
+=======
+        //推荐影院
+        public void pToRecommend(int userId,String sessionId,int page,int count);
+        //附近影院
+        public void pToNearby(int userId,String sessionId,int page,int count);
+        //影院详情页面
+        public void pToDetails(int cinemaId,int movield);
+        //影院轮播图
+        public void pToFlow(int cinemaId);
+        //详情页面详情
+        public void pToDetailsFragment(int cinemaId);
+        //详情页面评论
+        public void pToEvaluateFragment(int cinemaId,int page ,int count);
+        //详情页面评论点赞
+        public void pToEvaluateFragmentGreat(int userId,String sessionId,int commentId);
+
+
+>>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
         public void toHotMove();
         public void toMoving();
         public void toMoveCom();
@@ -79,6 +123,22 @@ public interface ContractInterface {
         public void toDownMovie(int sche,int amount,String sign);
         public void toPayMovie(int type,String order);
         public void onDestroy();
+<<<<<<< HEAD
+=======
+    }
+
+    //影院内部的接口调用
+    public interface CinemaInterface{
+        //关注
+        public void pToAttention(int id,int userId,String sessionId);
+        //不关注
+        public void pToNotAttention(int id,int userId,String sessionId);
+
+        //关注
+        public void pToRAttention(int id,int userId,String sessionId);
+        //不关注
+        public void pToRNotAttention(int id,int userId,String sessionId);
+>>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
     }
 
 }

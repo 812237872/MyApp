@@ -29,6 +29,7 @@ public interface Api {
     @GET("findRecommendCinemas")
     public Observer<ResponseBody>getRecommend();
 
+<<<<<<< HEAD
     @GET
     Observable<ResponseBody> getMove(@Url String url, @Header("userId") int userId, @Header("sessionId") String session, @Query("page") int page, @Query("count") int count);
     Observable<ResponseBody> getMove(@Header("userId") int userId,@Header("sessionId") String session,@Query("page") int page,@Query("count") int count);
@@ -55,4 +56,51 @@ public interface Api {
     @FormUrlEncoded
     @POST
     Observable<ResponseBody> payPrice(@Url String url, @Header("userId") int userid,@Header("sessionId") String session,@Field("payType") int type,@Field("orderId") String orderId);
+=======
+    //附近影院
+    @GET("movieApi/cinema/v1/findNearbyCinemas")
+    public Observable<ResponseBody>
+    getNearby(@Query("page")int page,@Query("count")int count,
+                 @Header("userId")int userId,@Header("sessionId")String sessionId);
+
+    //影院的详情页
+    @GET("movieApi/movie/v1/findMovieScheduleList")
+    public Observable<ResponseBody>
+    getDetails(@Query("cinemasId")int cinemasId,@Query("movieId")int movieId);
+
+    //关注
+    @GET("movieApi/cinema/v1/verify/followCinema")
+    public Observable<ResponseBody>
+    getAttention(@Query("cinemaId")int cinemaId ,@Header("userId")int userId,@Header("sessionId")String sessionId);
+    //    //不关注
+    @GET("movieApi/cinema/v1/verify/cancelFollowCinema")
+    public Observable<ResponseBody>
+    getNotAttention(@Query("cinemaId")int cinemaId ,@Header("userId")int userId,@Header("sessionId")String sessionId);
+
+    //详情页面轮播图
+    @GET("movieApi/movie/v1/findMovieListByCinemaId")
+    public Observable<ResponseBody>
+    getFlow(@Query("cinemaId")int cinemaId);
+
+    //相亲页面详情
+    @GET("movieApi/cinema/v1/findCinemaInfo")
+    public Observable<ResponseBody>
+    getDetailsFragment(@Query("cinemaId")int cinemaId);
+    //详情页面评论
+    @GET("movieApi/cinema/v1/findAllCinemaComment")
+    public Observable<ResponseBody>
+    getEvaluateFragment(@Query("cinemaId")int cinemaId,@Query("page")int page,@Query("count")int count);
+    //详情页面评论点赞
+
+    @FormUrlEncoded
+    @POST("movieApi/cinema/v1/verify/cinemaCommentGreat")
+    public Observable<ResponseBody>
+    getgetEvaluateFragmentGreat(@Field("commentId") int commentId ,@Header("userId")int userId,@Header("sessionId")String sessionId);
+
+
+
+
+    @GET
+    Observable<ResponseBody> getMove(@Url String url, @Header("userId") int userId, @Header("sessionId") String session, @Query("page") int page, @Query("count") int count);
+>>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
 }

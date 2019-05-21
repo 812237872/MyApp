@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="TabLayout_check">#D01658</color>
     <color name="TabLayout_fals">#FFFFFF</color>
+    <color name="radiogroup_start">#E4185D</color>
+    <color name="radiogroup_end">#490A34</color>
 </resources>

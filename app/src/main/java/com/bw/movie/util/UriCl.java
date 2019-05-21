@@ -2,6 +2,7 @@ package com.bw.movie.util;
 
 public class UriCl {
 
+<<<<<<< HEAD
     public static String getBase = "http://mobile.bwstudent.com/";
     public static String hotMove="movieApi/movie/v1/findHotMovieList";
     public static String moving="movieApi/movie/v1/findReleaseMovieList";
@@ -21,4 +22,9 @@ public class UriCl {
     public static String pay="movieApi/movie/v1/verify/pay";
 
 
+=======
+    public static String getBase = "http://172.17.8.100/";
+
+    public static String hotMove="findHotMovieList";
+>>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
 }

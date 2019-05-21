@@ -3,6 +3,7 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     >
 
     <RadioGroup
@@ -11,13 +12,14 @@
         android:orientation="horizontal"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:paddingTop="17dp"
-        android:layout_weight="1">
+        android:paddingTop="8dp"
+        android:layout_weight="0.5">
         <RadioButton
             android:id="@+id/cinema_Radio1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/tablayout_selector"
+            android:textColor="@color/color_tavlayout"
             android:layout_marginRight="10dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -32,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/tablayout_selector"
+            android:textColor="@color/color_tavlayout"
             android:layout_marginLeft="10dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -43,8 +46,10 @@
     </RadioGroup>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_weight="9"
+        android:layout_weight="9.5"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
         android:id="@+id/cinema_FrameLayout"></FrameLayout>
 
 </LinearLayout>

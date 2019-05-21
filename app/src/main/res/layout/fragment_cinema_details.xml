@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="35dp"
+            android:background="@drawable/cinema_detail_icon_location_default_hdpi"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地址"
+            android:id="@+id/fragment_cinema_details_address"
+            android:layout_marginTop="5dp"
+            android:textSize="16dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="20dp">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="35dp"
+            android:background="@drawable/cinema_detail_icon_phone_default_hdpi"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地址"
+            android:id="@+id/fragment_cinema_details_phone"
+            android:layout_marginTop="5dp"
+            android:textSize="16dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="20dp">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="35dp"
+            android:background="@drawable/cinema_detail_icon_route_default_hdpi"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="乘车路线"
+            android:layout_marginTop="5dp"
+            android:textSize="16dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="40dp"
+        android:id="@+id/fragment_cinema_details_hoo"
+        />
+
+
+</LinearLayout>

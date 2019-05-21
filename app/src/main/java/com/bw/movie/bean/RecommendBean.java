@@ -49,7 +49,7 @@ public class RecommendBean {
          * logo : http://172.17.8.100/images/movie/logo/CGVxx.jpg
          * name : CGV星星影城
          */
-
+        public boolean Attention ;
         private String address;
         private int commentTotal;
         private int distance;

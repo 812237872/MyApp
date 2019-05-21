@@ -2,6 +2,7 @@ package com.bw.movie.model;
 import android.net.Uri;
 import android.util.Log;
 
+<<<<<<< HEAD
 import com.bw.movie.bean.hotmove.CinemaBean;
 import com.bw.movie.bean.hotmove.DownBean;
 import com.bw.movie.bean.hotmove.HotMoveBean;
@@ -11,6 +12,15 @@ import com.bw.movie.bean.hotmove.MoveXiangBean;
 import com.bw.movie.bean.hotmove.MoveYingBean;
 import com.bw.movie.bean.hotmove.PayBean;
 import com.bw.movie.bean.user.LoginBean;
+=======
+import com.bw.movie.bean.DetailsFragmentBean;
+import com.bw.movie.bean.DetailsBean;
+import com.bw.movie.bean.EvaluateFragmentBean;
+import com.bw.movie.bean.FlowBean;
+import com.bw.movie.bean.HotMoveBean;
+import com.bw.movie.bean.LoginBean;
+import com.bw.movie.bean.NearbyBean;
+>>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
 import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.util.Api;
 import com.bw.movie.util.RetrofitUtil;
@@ -30,6 +40,7 @@ import rx.schedulers.Schedulers;
 
 public class MyModel {
 
+<<<<<<< HEAD
     MyLogin myLogin;
     MyMoveCom myMoveCom;
     MyRecommend myRecommend;
@@ -37,6 +48,26 @@ public class MyModel {
     LikeMove likeMove;
     MoveXiang moveXiang;
     MoveYings moveYings;
+=======
+    MyLogin myLogin ;
+    MyRegister myRegister ;
+
+    //**推荐--附近   影院
+    MyNearby myNearby;
+    MyRecommend myRecommend ;
+    //关注
+    MyAttention myAttention ;
+    MyNotAttention myNotAttention;
+//影院详情页
+    MyDetails myDetails;
+    //影院轮播图
+    setMyFlow setMyFlow ;
+    //影院详情页详情
+    setDetailsFragment setDetailsFragment;
+    setEvaluateFragment setEvaluateFragment ;
+    setEvaluateFragmentGreat setEvaluateFragmentGreat ;
+
+>>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
     private final RetrofitUtil util;
     private final Api api;
 
@@ -83,6 +114,7 @@ public class MyModel {
                     }
                 });
     }
+<<<<<<< HEAD
 
     ///推荐影院
 //    public void mToRecommend(int userId, String sessionId, int page, int count) {
@@ -178,22 +210,207 @@ public class MyModel {
         }
     public void disLikeMove(int id){
         api.likeMove(UriCl.dislikemove,LoginActivity.userId,LoginActivity.sessionId,id)
+=======
+    ///推荐影院
+    public void mToRecommend(int userId, String sessionId, int page,int count) {
+        api.getRecommend(page, count, userId, sessionId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<ResponseBody>() {
                     @Override
                     public void call(ResponseBody responseBody) {
                         try {
-                            String s = responseBody.string();
-                            JSONObject jsonObject=new JSONObject(s);
-                            String message = jsonObject.getString("message");
-                            likeMove.Succeed(message);
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"错误"+string);
+                            Gson gson = new Gson();
+                            RecommendBean recommendBean = gson.fromJson(string, RecommendBean.class);
+                            myRecommend.Succeed(recommendBean);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 });
     }
+
+    //附近影院
+    public void mToNearby(int userId, String sessionId, int page,int count){
+        api.getNearby(page,count,userId,sessionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"错误"+string);
+                            Gson gson = new Gson();
+                            NearbyBean nearbyBean = gson.fromJson(string, NearbyBean.class);
+                            myNearby.Succeed(nearbyBean);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    //影院关注
+    public void mToAttention(int userId, int sessionId, String cinemaId){
+        api.getAttention(userId, sessionId,cinemaId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"错误"+string);
+                            JSONObject jsonObject = new JSONObject(string);
+                            String message = jsonObject.getString("message");
+                            myAttention.Succeed(message);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    ///不关注
+    public void mToNotAttention(int userId, int sessionId, String cinemaId){
+        api.getNotAttention(userId, sessionId, cinemaId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"错误"+string);
+                            JSONObject jsonObject = new JSONObject(string);
+                            String message = jsonObject.getString("message");
+                            myNotAttention.Succeed(message);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    //影院详情页
+    public void mToDetails(int cinemaId,int movieId){
+        api.getDetails(cinemaId,movieId)
+>>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+<<<<<<< HEAD
+                            String s = responseBody.string();
+                            JSONObject jsonObject=new JSONObject(s);
+                            String message = jsonObject.getString("message");
+                            likeMove.Succeed(message);
+=======
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"错误"+string);
+                            Gson gson = new Gson();
+                            DetailsBean detailsBean = gson.fromJson(string, DetailsBean.class);
+                            myDetails.Succeed(detailsBean);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+    //影院详情萝卜图
+    public void mToFlow(int cinemaId){
+        api.getFlow(cinemaId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"错误+i"+string);
+                            Gson gsond = new Gson();
+                            FlowBean flowBean = gsond.fromJson(string, FlowBean.class);
+                            setMyFlow.Succeed(flowBean);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+    //影院详情页详情
+    public void mToDetailsFragment(int cinemaId){
+        api.getDetailsFragment(cinemaId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"详情"+string);
+                            Gson gson = new Gson();
+                            DetailsFragmentBean detailsFragmentBean = gson.fromJson(string, DetailsFragmentBean.class);
+                            setDetailsFragment.Succeed(detailsFragmentBean);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+    //影院详情页评论
+    public void mToEvaluateFragment(int cinemaId,int page ,int count){
+        api.getEvaluateFragment(cinemaId, page, count)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"评论"+string);
+                            Gson gson = new Gson();
+                            EvaluateFragmentBean evaluateFragmentBean = gson.fromJson(string, EvaluateFragmentBean.class);
+                            setEvaluateFragment.Succeed(evaluateFragmentBean);
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+
+    //影院详情页评论点赞
+    public void mToEvaluateFragmenGreat(int userId,String sessionId,int commentId){
+        Log.e("a123", "mToEvaluateFragmenGreat: "+userId+"-----"+sessionId+"-----"+commentId);
+        api.getgetEvaluateFragmentGreat(commentId, userId, sessionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"额详情"+string);
+                            JSONObject jsonObject = new JSONObject(string);
+                            String message = jsonObject.getString("message");
+                            Log.e("a123", "call: "+message.toString() );
+                            setEvaluateFragmentGreat.Succeed(message);
+>>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+<<<<<<< HEAD
 
     public void moveXiang(int id){
         api.likeMove(UriCl.movexiang,LoginActivity.userId,LoginActivity.sessionId,id)
@@ -212,6 +429,38 @@ public class MyModel {
                         }
                     }
                 });
+=======
+
+
+
+
+    public void getHotMove(){
+        api.getMove(UriCl.hotMove,LoginActivity.userId,LoginActivity.sessionId,1,5)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Action1<ResponseBody>() {
+            @Override
+            public void call(ResponseBody responseBody) {
+                try {
+                    String s = responseBody.string();
+                    Gson gson=new Gson();
+                    HotMoveBean hotMoveBean = gson.fromJson(s, HotMoveBean.class);
+                    myRegister.Succeed(hotMoveBean);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
+    public void setMyRegister(MyRegister register){
+        myRegister = register ;
+    }
+    public interface MyRegister{
+        public void Succeed(Object object);
+        public void error(Object object);
+>>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
     }
 
     public void moveXiangs(int id){
@@ -360,6 +609,7 @@ public class MyModel {
                 });
     }
 
+<<<<<<< HEAD
     public void downMovie(int sche,int amount,String sign){
         api.downMovie(UriCl.downmove,LoginActivity.userId,LoginActivity.sessionId,sche,amount,sign)
                 .subscribeOn(Schedulers.io())
@@ -449,3 +699,75 @@ public class MyModel {
         public void Succeed(Object object);
     }
 }
+=======
+    // 附近影院---杨明豪
+    public void setMyNearby(MyNearby nearby){
+        myNearby = nearby;
+    }
+    public interface MyNearby{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
+
+    //影院关注
+    public void setMyAttention(MyAttention attention){
+        myAttention = attention;
+    }
+    public interface MyAttention{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
+
+    //影院不关注
+    public void setMyNotAttention(MyNotAttention attention){
+        myNotAttention = attention ;
+    }
+    public interface MyNotAttention{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
+
+    //影院详情页
+    public void setMyDetails(MyDetails details){
+        myDetails = details ;
+    }
+    public interface MyDetails{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
+
+    //影院轮播
+    public void setSetMyFlow(setMyFlow flow){
+        setMyFlow = flow ;
+    }
+    public interface setMyFlow{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
+
+    //影院详情页详情
+    public void setSetDetailsFragment(setDetailsFragment fragment){
+        setDetailsFragment = fragment;
+    }
+    public interface setDetailsFragment{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
+    //影院详情页评论
+    public void setSetEvaluateFragment(setEvaluateFragment fragment){
+        setEvaluateFragment = fragment;
+    }
+    public interface setEvaluateFragment{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
+    //影院详情页评论点赞
+    public void setSetEvaluateFragmentGreat(setEvaluateFragmentGreat great){
+        setEvaluateFragmentGreat = great ;
+    }
+    public interface setEvaluateFragmentGreat{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
+}
+>>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
