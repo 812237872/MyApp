@@ -1,7 +1,7 @@
 package com.bw.movie.bean.hotmove;
 
 public class HotMove {
-    public boolean followMovie;
+    public int followMovie;
     public int id;
     public int rank;
     public String imageUrl;
@@ -9,7 +9,7 @@ public class HotMove {
     public String summary;
     public String releaseTimeShow;
 
-    public HotMove(boolean followMovie, int id, int rank, String imageUrl, String name, String summary, String releaseTimeShow) {
+    public HotMove(int followMovie, int id, int rank, String imageUrl, String name, String summary, String releaseTimeShow) {
         this.followMovie = followMovie;
         this.id = id;
         this.rank = rank;
@@ -19,11 +19,11 @@ public class HotMove {
         this.releaseTimeShow = releaseTimeShow;
     }
 
-    public boolean isFollowMovie() {
+    public int getFollowMovie() {
         return followMovie;
     }
 
-    public void setFollowMovie(boolean followMovie) {
+    public void setFollowMovie(int followMovie) {
         this.followMovie = followMovie;
     }
 

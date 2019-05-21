@@ -19,12 +19,19 @@ import java.util.List;
 public class MyRecAdapter extends RecyclerView.Adapter<MyRecAdapter.ViewHolder> {
     Context context;
     List<HotMove> list;
+    ListenerInterface listenerInterface;
 
     public MyRecAdapter(Context context, List<HotMove> list) {
         this.context = context;
         this.list = list;
     }
 
+    public void setListener(ListenerInterface listener){
+        listenerInterface=listener;
+    }
+    public interface ListenerInterface{
+        public void onClick(int i);
+    }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -33,11 +40,17 @@ public class MyRecAdapter extends RecyclerView.Adapter<MyRecAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         String s = list.get(i).getImageUrl();
         Uri uri=Uri.parse(s);
         viewHolder.simpleDraweeView.setImageURI(uri);
         viewHolder.text_hotmove.setText(list.get(i).getName());
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listenerInterface.onClick(i);
+            }
+        });
     }
 
     @Override

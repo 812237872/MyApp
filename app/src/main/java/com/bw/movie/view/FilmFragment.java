@@ -1,5 +1,6 @@
 package com.bw.movie.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,19 +10,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
 import com.bw.movie.R ;
 import com.bw.movie.adapter.CinemaFlowAdapter;
 import com.bw.movie.adapter.MyRecAdapter;
 import com.bw.movie.bean.hotmove.HotMove;
 import com.bw.movie.bean.hotmove.HotMoveBean;
 import com.bw.movie.cont.ContractInterface;
+import com.bw.movie.presenter.MyPresenter;
+import com.bw.movie.view.activity.SreachActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import recycler.coverflow.RecyclerCoverFlow;
 
-public class FilmFragment extends Fragment implements ContractInterface.ShowInterface {
+public class FilmFragment extends Fragment implements ContractInterface.ShowInterface ,ContractInterface.ShowInterface.LikeMoveInterface{
     RecyclerCoverFlow recyclerCoverFlow;
     List<HotMove> list=new ArrayList<>();
     List<HotMove> list_mg=new ArrayList<>();
@@ -30,10 +35,11 @@ public class FilmFragment extends Fragment implements ContractInterface.ShowInte
     RecyclerView rec_1;
     RecyclerView rec_2;
     RecyclerView rec_3;
-    MyRecAdapter myRecAdapte_1;
-    MyRecAdapter myRecAdapte_2;
-    MyRecAdapter myRecAdapte_3;
-
+    MyRecAdapter myRecAdapter_1;
+    MyRecAdapter myRecAdapter_2;
+    MyRecAdapter myRecAdapter_3;
+    ContractInterface.PresenterInterface presenterInterface;
+    ImageView img_next1,img_next2,img_next3;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,34 +48,99 @@ public class FilmFragment extends Fragment implements ContractInterface.ShowInte
         rec_1=view.findViewById(R.id.rec_1);
         rec_3=view.findViewById(R.id.rec_3);
         rec_2=view.findViewById(R.id.rec_2);
+        img_next1=view.findViewById(R.id.img_next1);
+        img_next2=view.findViewById(R.id.img_next2);
+        img_next3=view.findViewById(R.id.img_next3);
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        presenterInterface=new MyPresenter<>(this);
         cinemaFlowAdapter = new CinemaFlowAdapter(getActivity(),list);
         recyclerCoverFlow.setAdapter(cinemaFlowAdapter);
-        LinearLayoutManager manager=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,true);
-        LinearLayoutManager manager2=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,true);
-        LinearLayoutManager manager3=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,true);
+        cinemaFlowAdapter.setOnItemListener(new CinemaFlowAdapter.OnItemListener() {
+            @Override
+            public void onClick(int i) {
+                Intent intent = new Intent(getActivity(), SreachActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayoutManager manager=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager manager2=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager manager3=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         rec_1.setLayoutManager(manager);
-        myRecAdapte_1 = new MyRecAdapter(getActivity(),list);
-        rec_1.setAdapter(myRecAdapte_1);
+        myRecAdapter_1 = new MyRecAdapter(getActivity(),list);
+        rec_1.setAdapter(myRecAdapter_1);
         rec_2.setLayoutManager(manager2);
-        myRecAdapte_2=new MyRecAdapter(getActivity(),list_mg);
-        rec_2.setAdapter(myRecAdapte_2);
+        myRecAdapter_2=new MyRecAdapter(getActivity(),list_mg);
+        rec_2.setAdapter(myRecAdapter_2);
         rec_3.setLayoutManager(manager3);
-        myRecAdapte_3=new MyRecAdapter(getActivity(),list_com);
-        rec_3.setAdapter(myRecAdapte_3);
+        myRecAdapter_3=new MyRecAdapter(getActivity(),list_com);
+        rec_3.setAdapter(myRecAdapter_3);
+        init();
+        myRecAdapter_1.setListener(new MyRecAdapter.ListenerInterface() {
+            @Override
+            public void onClick(int i) {
+                Intent intent = new Intent(getActivity(), SreachActivity.class);
+                startActivity(intent);
+            }
+        });
+        myRecAdapter_2.setListener(new MyRecAdapter.ListenerInterface() {
+            @Override
+            public void onClick(int i) {
+                Intent intent = new Intent(getActivity(), SreachActivity.class);
+                startActivity(intent);
+            }
+        });
+        myRecAdapter_3.setListener(new MyRecAdapter.ListenerInterface() {
+            @Override
+            public void onClick(int i) {
+                Intent intent = new Intent(getActivity(), SreachActivity.class);
+                startActivity(intent);
+            }
+        });
+        img_next1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SreachActivity.class);
+                startActivity(intent);
+            }
+        });
+        img_next2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SreachActivity.class);
+                startActivity(intent);
+            }
+        });
+        img_next3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SreachActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
+
+    public void init(){
+        presenterInterface.toHotMove();
+        presenterInterface.toMoving();
+        presenterInterface.toMoveCom();
+    }
     @Override
     public void showHotMove(Object o) {
         HotMoveBean hotMoveBean= (HotMoveBean) o;
         List<HotMove> result = hotMoveBean.getResult();
         list.addAll(result);
+        //让轮播图显示中间的图片
+        recyclerCoverFlow.smoothScrollToPosition(list.size()/2);
         cinemaFlowAdapter.notifyDataSetChanged();
+        myRecAdapter_1.notifyDataSetChanged();
     }
 
     @Override
@@ -77,7 +148,7 @@ public class FilmFragment extends Fragment implements ContractInterface.ShowInte
         HotMoveBean hotMoveBean= (HotMoveBean) o;
         List<HotMove> result = hotMoveBean.getResult();
         list_mg.addAll(result);
-        myRecAdapte_2.notifyDataSetChanged();
+        myRecAdapter_2.notifyDataSetChanged();
     }
 
     @Override
@@ -85,6 +156,11 @@ public class FilmFragment extends Fragment implements ContractInterface.ShowInte
         HotMoveBean hotMoveBean= (HotMoveBean) o;
         List<HotMove> result = hotMoveBean.getResult();
         list_com.addAll(result);
-        myRecAdapte_3.notifyDataSetChanged();
+        myRecAdapter_3.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showLikeMove(Object o) {
+
     }
 }

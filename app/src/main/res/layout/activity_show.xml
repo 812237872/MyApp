@@ -15,17 +15,17 @@
     <RadioGroup
         android:id="@+id/Ashow_RadioGroup"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="@dimen/dp_80"
         android:layout_alignParentBottom="true"
-        android:paddingBottom="10dp"
+        android:paddingBottom="@dimen/dp_10"
         android:orientation="horizontal">
         <RadioButton
             android:id="@+id/Ashow_Radio1"
             android:background="@drawable/fragment_film"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_20"
             android:layout_weight="1"
 
             android:button="@null"
@@ -34,18 +34,18 @@
         <RadioButton
             android:id="@+id/Ashow_Radio2"
             android:background="@drawable/fragment_cinema"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_20"
             android:layout_weight="1"
             android:button="@null"
             />
         <RadioButton
             android:id="@+id/Ashow_Radio3"
             android:background="@drawable/fragment_my"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:layout_weight="1"

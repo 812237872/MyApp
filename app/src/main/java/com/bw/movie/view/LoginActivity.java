@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -109,6 +110,7 @@ public class LoginActivity extends AppCompatActivity implements ContractInterfac
         sessionId = loginBean.getResult().getSessionId();
         userId = loginBean.getResult().getUserId();
         if (loginBean.getMessage().equals("登陆成功")){
+            Log.e("登录错误",""+loginBean.getMessage());
             Toast.makeText(LoginActivity.this,loginBean.getMessage(),Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LoginActivity.this,ShowActivity.class);
             startActivity(intent);

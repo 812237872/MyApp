@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:id="@+id/re_layout"
+        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
+
+        >
+
+        <TextView
+            android:id="@+id/text_xz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_14"
+            android:text="选择支付方式"
+            android:textColor="#666"
+            android:textSize="@dimen/sp_16" />
+
+        <ImageView
+            android:id="@+id/pay_down"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@mipmap/com_icon_down_default_hdpi" />
+
+        <ImageView
+            android:id="@+id/img_wei"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_below="@id/text_xz"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@mipmap/pay_icon_weixin_default_hdpi" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_xz"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_23"
+            android:layout_toRightOf="@id/img_wei"
+            android:text="微信支付"
+            android:textColor="#666"
+            android:textSize="@dimen/sp_14" />
+
+        <ImageView
+            android:id="@+id/img_zhi"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_below="@id/img_wei"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@mipmap/pay_icon_zhifubao_default_hdpi" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_wei"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_23"
+            android:layout_toRightOf="@id/img_wei"
+            android:text="支付宝支付"
+            android:textColor="#666"
+            android:textSize="@dimen/sp_12" />
+
+        <RadioGroup
+            android:id="@+id/group_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pay_down"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_10"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rb1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/rb2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20" />
+        </RadioGroup>
+
+    </RelativeLayout>
+    </RelativeLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="text"
+        android:layout_below="@id/re_layout"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/qa"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp_16"
+        android:id="@+id/btn_pay"
+        android:visibility="gone"
+        />
+</RelativeLayout>

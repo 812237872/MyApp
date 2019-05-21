@@ -1,6 +1,7 @@
 package com.bw.movie.view;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.Environment;
 
 import com.facebook.cache.disk.DiskCacheConfig;
@@ -10,7 +11,7 @@ import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import java.io.File;
 
 public class App extends Application {
-
+    public static Context context;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -21,5 +22,6 @@ public class App extends Application {
                 .setMainDiskCacheConfig(diskCacheConfig)
                 .build();
         Fresco.initialize(this,config);
+        context = getApplicationContext();
     }
 }

@@ -2,26 +2,37 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="186dp"
-        android:background="@drawable/hdpi2"
-
-        />
-    <com.bw.movie.view.MyViews
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:padding="6dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="25dp"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="186dp"
+                android:background="@drawable/hdpi2"
+                />
+            <com.bw.movie.view.MyViews
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:layout_alignParentRight="true"
+                />
+
+
     <recycler.coverflow.RecyclerCoverFlow
-        android:layout_width="158dp"
+        android:layout_width="match_parent"
         android:layout_height="223dp"
         android:id="@+id/rcf_cinema_flow"
         android:layout_centerHorizontal="true"
@@ -41,9 +52,18 @@
             android:textSize="20sp"
             android:padding="5dp"
             android:id="@+id/text1" />
+        <ImageView
+            android:layout_width="@dimen/dp_14"
+            android:layout_height="@dimen/dp_14"
+            android:background="@mipmap/com_icon_next_default_hdpi"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_7"
+            android:id="@+id/img_next1"
+            />
 
         <ImageView
-            android:layout_width="80dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:src="@mipmap/group2"
             android:background="@drawable/qi"
@@ -73,9 +93,18 @@
             android:textSize="20sp"
             android:padding="5dp"
             android:id="@+id/text2" />
+        <ImageView
+            android:layout_width="@dimen/dp_14"
+            android:layout_height="@dimen/dp_14"
+            android:background="@mipmap/com_icon_next_default_hdpi"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_7"
+            android:id="@+id/img_next2"
+            />
 
         <ImageView
-            android:layout_width="80dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:src="@mipmap/group2"
             android:background="@drawable/qi"
@@ -107,7 +136,16 @@
             android:id="@+id/text3" />
 
         <ImageView
-            android:layout_width="80dp"
+            android:layout_width="@dimen/dp_14"
+            android:layout_height="@dimen/dp_14"
+            android:background="@mipmap/com_icon_next_default_hdpi"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_7"
+            android:id="@+id/img_next3"
+            />
+        <ImageView
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:src="@mipmap/group2"
             android:background="@drawable/qi"
@@ -124,4 +162,6 @@
             />
     </RelativeLayout>
     </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
