@@ -20,6 +20,8 @@ import com.bw.movie.util.RetrofitUtil;
 import com.bw.movie.util.UriCl;
 import com.bw.movie.view.LoginActivity;
 import com.google.gson.Gson;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
 import okhttp3.ResponseBody;
@@ -215,8 +217,8 @@ public class MyModel {
         }
 
     //附近影院
-    public void mToNearby ( int userId, String sessionId,int page, int count){
-        api.getNearby(page, count, userId, sessionId)
+    public void mToNearby (String longitude,String latitude , int userId, String sessionId,int page, int count){
+        api.getNearby(longitude,latitude,page, count, userId, sessionId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<ResponseBody>() {
@@ -307,11 +309,19 @@ public class MyModel {
                     public void call(ResponseBody responseBody) {
                         try {
                             String string = responseBody.string();
-                            //Log.e("AGE" ,"错误+i"+string);
-                            Gson gsond = new Gson();
-                            FlowBean flowBean = gsond.fromJson(string, FlowBean.class);
-                            setMyFlow.Succeed(flowBean);
+                            Log.e("AGE" ,"错误+i"+string);
+                            JSONObject jsonObject = new JSONObject(string);
+                            String status = jsonObject.getString("status");
+                            if (status == "1001"){
+                                setMyFlow.Succeed("");
+                            }else {
+                                Gson gsond = new Gson();
+                                FlowBean flowBean = gsond.fromJson(string, FlowBean.class);
+                                setMyFlow.Succeed(flowBean);
+                            }
                         } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }

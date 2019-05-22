@@ -87,7 +87,7 @@ public interface ContractInterface {
         //推荐影院
         public void pToRecommend(int userId,String sessionId,int page,int count);
         //附近影院
-        public void pToNearby(int userId,String sessionId,int page,int count);
+        public void pToNearby(String longitude,String latitude ,int userId,String sessionId,int page,int count);
         //影院详情页面
         public void pToDetails(int cinemaId,int movield);
         //影院轮播图

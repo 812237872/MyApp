@@ -1,5 +1,6 @@
 package com.bw.movie.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -32,6 +33,8 @@ public class CinemaNearby extends Fragment implements ContractInterface.CinemaNe
     private NearbyAdapter adapter;
     private String sessionId;
     private int userId;
+    private double latitude;
+    private double longitude;
 
 
     @Nullable
@@ -49,6 +52,10 @@ public class CinemaNearby extends Fragment implements ContractInterface.CinemaNe
         sessionId = LoginActivity.sessionId;
         userId = LoginActivity.userId;
 
+        latitude = CinemaFragment.latitude;
+        longitude = CinemaFragment.longitude;
+
+
         xRecyclerView.setLoadingMoreEnabled(true);
         xRecyclerView.setPullRefreshEnabled(true);
 
@@ -64,25 +71,25 @@ public class CinemaNearby extends Fragment implements ContractInterface.CinemaNe
         presenterInterface = new MyPresenter<>(this);
         //关注
         cinemaInterface = new CinemaPresenter<>(this);
-//        presenterInterface.pToNearby(userId, sessionId,1,count);
+        presenterInterface.pToNearby(longitude+"",latitude+"",userId, sessionId,1,count);
 
         xRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                presenterInterface.pToRecommend(userId, sessionId,1,count);
+                presenterInterface.pToNearby(longitude+"",latitude+"",userId, sessionId,1,count);
             }
             int i = 1;
             @Override
             public void onLoadMore() {
                 i++;
-                presenterInterface.pToRecommend(userId, sessionId,i,count);
+                presenterInterface.pToNearby(longitude+"",latitude+"",userId, sessionId,i,count);
             }
         });
 
 
         adapter.setOnItemNearbyClickListener(new NearbyAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(int position, boolean ck,int i) {
+            public void onItemClick(int position, boolean ck) {
                 if (ck){
                     cinemaInterface.pToAttention(position,userId,sessionId);
                 }else {
@@ -90,6 +97,20 @@ public class CinemaNearby extends Fragment implements ContractInterface.CinemaNe
                 }
             }
         });
+
+        adapter.setOnItemLinearClickListener(new NearbyAdapter.OnItemLinearClickListener() {
+            @Override
+            public void onItemClick(int position, String name, String address, String logo) {
+                //Toast.makeText(getActivity(),"点击",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(),CinemaDetailsActivity.class);
+                intent.putExtra("cinemaId",position);
+                intent.putExtra("name",name);
+                intent.putExtra("address",address);
+                intent.putExtra("logo",logo);
+                startActivity(intent);
+            }
+        });
+
 
 
         appss();

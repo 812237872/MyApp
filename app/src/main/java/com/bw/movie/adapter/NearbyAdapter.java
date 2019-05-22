@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.QuickContactBadge;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.holder> {
     private final List<NearbyBean.ResultBean> list;
 
     OnItemClickListener  mOnItemClickListener ;
+    OnItemLinearClickListener onItemLinearClickListener;
     private int id;
 
     public NearbyAdapter(Context context, List<NearbyBean.ResultBean> list) {
@@ -38,13 +40,25 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.holder> {
 
     @Override
     public void onBindViewHolder(@NonNull final NearbyAdapter.holder holder, final int i) {
-        final int id = list.get(i).getId();
+        /*final int id = list.get(i).getId();
         String name = list.get(i).getName();
         String address = list.get(i).getAddress();
         int distance = list.get(i).getDistance();
         String logo = list.get(i).getLogo();
 
         holder.simpleDraweeView.setImageURI(logo);
+        holder.name.setText(name);
+        holder.address.setText(address);
+        holder.distance.setText(distance+"");*/
+        final int id = list.get(i).getId();
+        final String name = list.get(i).getName();
+        final String address = list.get(i).getAddress();
+        int distance = list.get(i).getDistance();
+        final String logo = list.get(i).getLogo();
+        String logo1 = list.get(i).getLogo();
+
+
+        holder.simpleDraweeView.setImageURI(logo1);
         holder.name.setText(name);
         holder.address.setText(address);
         holder.distance.setText(distance+"");
@@ -59,16 +73,16 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.holder> {
                 @Override
                 public void onClick(View v) {
                     checked = holder.imageView.isChecked();
-                    mOnItemClickListener.onItemClick(id, checked,i);
+                    mOnItemClickListener.onItemClick(id, checked);
                 }
             });
 
-            /*holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onItemLinearClickListener.onItemClick(id);
+                    onItemLinearClickListener.onItemClick(id,name,address,logo);
                 }
-            });*/
+            });
 
         }else {
             holder.imageView.setChecked(false);
@@ -78,16 +92,16 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.holder> {
                 @Override
                 public void onClick(View v) {
                     checked = holder.imageView.isChecked();
-                    mOnItemClickListener.onItemClick(id, checked,i);
+                    mOnItemClickListener.onItemClick(id, checked);
                 }
             });
 
-            /*holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    onItemLinearClickListener.onItemClick(id);
+                    onItemLinearClickListener.onItemClick(id,name,address,logo);
                 }
-            });*/
+            });
 
         }
     }
@@ -101,7 +115,14 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.holder> {
         mOnItemClickListener    = clickListener ;
     }
     public interface OnItemClickListener {
-        void onItemClick(int position,boolean ck,int i);
+        void onItemClick(int position,boolean ck);
+    }
+
+    public void setOnItemLinearClickListener(OnItemLinearClickListener listener){
+        onItemLinearClickListener = listener ;
+    }
+    public interface OnItemLinearClickListener {
+        void onItemClick(int position,String name , String address,String logo);
     }
 
 
@@ -109,14 +130,16 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.holder> {
         SimpleDraweeView simpleDraweeView ;
         TextView name , address ,distance ;
         CheckBox imageView ;
+        LinearLayout linearLayout;
 
         public holder(@NonNull View itemView) {
             super(itemView);
-            simpleDraweeView = itemView.findViewById(R.id.Nearby_SimpleDraweeView);
-            name = itemView.findViewById(R.id.Nearby_name);
-            address = itemView.findViewById(R.id.Nearby_address);
-            distance = itemView.findViewById(R.id.Nearby_distance);
-            imageView = itemView.findViewById(R.id.Nearby_CheckBox);
+            simpleDraweeView = itemView.findViewById(R.id.RecommendAdapter_SimpleDraweeView);
+            name = itemView.findViewById(R.id.RecommendAdapter_name);
+            address = itemView.findViewById(R.id.RecommendAdapter_address);
+            distance = itemView.findViewById(R.id.RecommendAdapter_distance);
+            imageView = itemView.findViewById(R.id.RecommendAdapter_CheckBox);
+            linearLayout = itemView.findViewById(R.id.RecommendAdapter_LinearLayout);
         }
     }
 }

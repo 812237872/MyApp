@@ -195,7 +195,11 @@ public class CinemaDetailsActivity extends AppCompatActivity implements Contract
     public void showFlow(Object object) {
         FlowBean flowBean = (FlowBean) object;
         List<FlowBean.ResultBean> resultBeans = flowBean.getResult();
-        Flow_list.addAll(resultBeans);
+        if (resultBeans == null){
+
+        }else {
+            Flow_list.addAll(resultBeans);
+        }
         flowAdapter.notifyDataSetChanged();
     }
 }

@@ -75,7 +75,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
     }
     //附近影院
     @Override
-    public void pToNearby(int userId, String sessionId, int page, int count) {
+    public void pToNearby(String longitude,String latitude ,int userId, String sessionId, int page, int count) {
         myModel.setMyNearby(new MyModel.MyNearby() {
             @Override
             public void Succeed(Object object) {
@@ -88,7 +88,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
             public void error(Object object) {
             }
         });
-        myModel.mToNearby(userId,sessionId,page,count);
+        myModel.mToNearby(longitude,latitude,userId,sessionId,page,count);
     }
 
     //影院详情页

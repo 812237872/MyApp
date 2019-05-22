@@ -6,6 +6,10 @@
     android:background="#FFFFFF"
     >
 
+    <com.bw.movie.view.MyViews
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.bw.movie.view.MyViews>
+
     <RadioGroup
         android:id="@+id/cinema_RadioGroup"
         android:layout_width="wrap_content"

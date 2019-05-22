@@ -58,8 +58,9 @@ public interface Api {
     //附近影院
     @GET("movieApi/cinema/v1/findNearbyCinemas")
     public Observable<ResponseBody>
-    getNearby(@Query("page")int page,@Query("count")int count,
-                 @Header("userId")int userId,@Header("sessionId")String sessionId);
+    getNearby(@Query("longitude")String longitude , @Query("latitude")String latitude ,
+              @Query("page")int page,@Query("count")int count,
+              @Header("userId")int userId,@Header("sessionId")String sessionId);
 
     //影院的详情页
     @GET("movieApi/movie/v1/findMovieScheduleList")

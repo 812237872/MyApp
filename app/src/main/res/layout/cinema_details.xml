@@ -125,9 +125,9 @@
     <ImageView
         android:id="@+id/cinema_details_return"
         android:background="@drawable/com_icon_return_default_hdpi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="30dp"/>
 </RelativeLayout>

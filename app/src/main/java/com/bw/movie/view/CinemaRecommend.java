@@ -87,7 +87,7 @@ public class CinemaRecommend extends Fragment implements ContractInterface.Cinem
         adapter.setOnItemLinearClickListener(new RecommendAdapter.OnItemLinearClickListener() {
             @Override
             public void onItemClick(int position, String name, String address,String logo) {
-                Toast.makeText(getActivity(),"点击",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(),"点击",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(),CinemaDetailsActivity.class);
                 intent.putExtra("cinemaId",position);
                 intent.putExtra("name",name);
