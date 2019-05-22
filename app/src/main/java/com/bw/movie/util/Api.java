@@ -26,13 +26,12 @@ public interface Api {
                 @Field("birthday") String birthday , @Field("phone") String phone,
                 @Field("email") String email , @Field("pwd") String pwd, @Field("pwd2") String pwd2);
 
-    @GET("findRecommendCinemas")
-    public Observer<ResponseBody>getRecommend();
+    @GET("movieApi/cinema/v1/findRecommendCinemas")
+    Observable<ResponseBody>getRecommend(@Header("userId") int userid,@Header("sessionId") String sessionid,@Query("page") int page,@Query("count") int count);
 
-<<<<<<< HEAD
     @GET
     Observable<ResponseBody> getMove(@Url String url, @Header("userId") int userId, @Header("sessionId") String session, @Query("page") int page, @Query("count") int count);
-    Observable<ResponseBody> getMove(@Header("userId") int userId,@Header("sessionId") String session,@Query("page") int page,@Query("count") int count);
+
 
     @GET
     Observable<ResponseBody> likeMove(@Url String url, @Header("userId") int userId, @Header("sessionId") String session,@Query("movieId") int id);
@@ -56,7 +55,6 @@ public interface Api {
     @FormUrlEncoded
     @POST
     Observable<ResponseBody> payPrice(@Url String url, @Header("userId") int userid,@Header("sessionId") String session,@Field("payType") int type,@Field("orderId") String orderId);
-=======
     //附近影院
     @GET("movieApi/cinema/v1/findNearbyCinemas")
     public Observable<ResponseBody>
@@ -98,9 +96,4 @@ public interface Api {
     getgetEvaluateFragmentGreat(@Field("commentId") int commentId ,@Header("userId")int userId,@Header("sessionId")String sessionId);
 
 
-
-
-    @GET
-    Observable<ResponseBody> getMove(@Url String url, @Header("userId") int userId, @Header("sessionId") String session, @Query("page") int page, @Query("count") int count);
->>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
 }

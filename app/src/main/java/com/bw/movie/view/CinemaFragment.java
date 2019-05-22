@@ -5,11 +5,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-<<<<<<< HEAD
-=======
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
->>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;

@@ -66,10 +66,8 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
 
-<<<<<<< HEAD
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
-=======
+
     //ditu
     implementation 'com.amap.api:location:4.6.0'
->>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
 }

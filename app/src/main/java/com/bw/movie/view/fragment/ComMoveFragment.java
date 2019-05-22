@@ -56,7 +56,7 @@ public class ComMoveFragment extends Fragment implements ContractInterface.ShowI
                 startActivity(intent);
             }
         });
-        tomoveCom();
+//        tomoveCom();
     }
 
     public void tomoveCom(){

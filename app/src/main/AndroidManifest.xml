@@ -4,8 +4,7 @@
     package="com.bw.movie">
 
     <uses-permission android:name="android.permission.INTERNET" />
-<<<<<<< HEAD
-=======
+
 
     <!--用于进行网络定位-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
@@ -29,7 +28,6 @@
     <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
 
->>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
 
     <application
         android:name=".view.App"
@@ -39,17 +37,12 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-<<<<<<< HEAD
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="stateHidden|adjustResize">
-        <activity android:name=".acitivity.MainActivity" />
-=======
-        android:theme="@style/AppTheme">
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="a6db8b911757d1b9a4fd94ab9603bc5e"/>
         <activity android:name=".acitivity.MainActivity"></activity>
->>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
         <activity android:name=".acitivity.NavigationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,17 +53,14 @@
         <activity android:name=".view.LoginActivity" android:launchMode="singleTask" />
         <activity android:name=".view.RegisterActivity" />
         <activity android:name=".view.ShowActivity" />
-<<<<<<< HEAD
         <activity android:name=".view.activity.SreachActivity" />
         <activity android:name=".view.activity.MoveXiangActivity" />
         <activity android:name=".view.activity.CinemaActivity" />
         <activity android:name=".view.activity.PlayMoveActivity" />
         <activity android:name=".view.activity.GouActivity"></activity>
         <activity android:name=".wxapi.WXPayEntryActivity" android:exported="true" android:launchMode="singleTop"/>
-=======
         <activity android:name=".view.CinemaDetailsActivity"></activity>
         <service android:name="com.amap.api.location.APSService"></service>
->>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
     </application>
 
 </manifest>

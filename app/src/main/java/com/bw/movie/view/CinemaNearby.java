@@ -64,7 +64,7 @@ public class CinemaNearby extends Fragment implements ContractInterface.CinemaNe
         presenterInterface = new MyPresenter<>(this);
         //关注
         cinemaInterface = new CinemaPresenter<>(this);
-        presenterInterface.pToNearby(userId, sessionId,1,count);
+//        presenterInterface.pToNearby(userId, sessionId,1,count);
 
         xRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override

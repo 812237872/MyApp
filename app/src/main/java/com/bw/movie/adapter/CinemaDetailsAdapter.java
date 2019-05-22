@@ -20,12 +20,18 @@ import java.util.List;
 public class CinemaDetailsAdapter extends RecyclerView.Adapter<CinemaDetailsAdapter.holder> {
     private final Context context;
     private final List<DetailsBean.ResultBean> list;
-
+    Listener listener;
     public CinemaDetailsAdapter(Context context, List<DetailsBean.ResultBean> list) {
         this.context = context ;
         this.list = list ;
     }
+    public void setListener(Listener listener){
+        this.listener=listener;
+    }
 
+    public interface Listener{
+        public void onClick(int i);
+    }
     @NonNull
     @Override
     public CinemaDetailsAdapter.holder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -34,7 +40,7 @@ public class CinemaDetailsAdapter extends RecyclerView.Adapter<CinemaDetailsAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull holder holder, int i) {
+    public void onBindViewHolder(@NonNull holder holder, final int i) {
         String screeningHall = list.get(i).getScreeningHall();
         double price = list.get(i).getPrice();
         String beginTime = list.get(i).getBeginTime();
@@ -47,7 +53,12 @@ public class CinemaDetailsAdapter extends RecyclerView.Adapter<CinemaDetailsAdap
         holder.name.setText(screeningHall);
         holder.price.setText("￥"+price);
         holder.time.setText(beginTime+"——"+endTime);
-
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(i);
+            }
+        });
     }
 
     @Override

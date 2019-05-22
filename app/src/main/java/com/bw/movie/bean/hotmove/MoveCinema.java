@@ -9,9 +9,9 @@ public class MoveCinema {
     public int seatsTotal;
     public int seatsUseCount;
     public int status;
-    public float price;
+    public double price;
 
-    public MoveCinema(String beginTime, String duration, String endTime, int id, String screeningHall, int seatsTotal, int seatsUseCount, int status, float price) {
+    public MoveCinema(String beginTime, String duration, String endTime, int id, String screeningHall, int seatsTotal, int seatsUseCount, int status, double price) {
         this.beginTime = beginTime;
         this.duration = duration;
         this.endTime = endTime;
@@ -23,11 +23,11 @@ public class MoveCinema {
         this.price = price;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

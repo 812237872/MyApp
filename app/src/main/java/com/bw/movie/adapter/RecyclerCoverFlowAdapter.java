@@ -44,7 +44,8 @@ public class RecyclerCoverFlowAdapter extends RecyclerView.Adapter<RecyclerCover
             @Override
             public void onClick(View v) {
                 id = flow_list.get(i).getId();
-                onItemFlowClick.onItemClick(id);
+                String name=flow_list.get(i).getName();
+                onItemFlowClick.onItemClick(id,name);
             }
         });
 
@@ -60,7 +61,7 @@ public class RecyclerCoverFlowAdapter extends RecyclerView.Adapter<RecyclerCover
         onItemFlowClick = click ;
     }
     public interface OnItemFlowClick{
-        void onItemClick(int position);
+        void onItemClick(int position,String name);
     }
 
     public class holder extends RecyclerView.ViewHolder {

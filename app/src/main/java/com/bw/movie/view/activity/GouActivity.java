@@ -46,9 +46,9 @@ public class GouActivity extends AppCompatActivity implements ContractInterface.
 
     int pid;
     int num=0;
-    float price;
+    double price;
     PopupWindow payPopup;
-    float sum;
+    double sum;
     RelativeLayout relative_pay;
     public static String appId;
 
@@ -77,7 +77,7 @@ public class GouActivity extends AppCompatActivity implements ContractInterface.
         String beginTime = intent.getStringExtra("beginTime");
         String endTime = intent.getStringExtra("endTime");
         String screeningHall = intent.getStringExtra("screeningHall");
-        price = intent.getFloatExtra("price", 0);
+        price = intent.getDoubleExtra("price", 0);
         gou_name.setText(name);
         gou_address.setText(address);
         gou_time.setText(beginTime+"—"+endTime);

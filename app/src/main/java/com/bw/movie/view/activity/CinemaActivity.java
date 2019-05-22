@@ -20,7 +20,7 @@ import com.bw.movie.presenter.MyPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CinemaActivity extends AppCompatActivity implements ContractInterface.CinemaInterface {
+public class CinemaActivity extends AppCompatActivity implements ContractInterface.CinemasInterface {
 
     private int id;
     private String name;

@@ -30,7 +30,7 @@ public interface ContractInterface {
         public void showMoveZan(Object o);
         public void showMovePing(Object o);
     }
-    public interface CinemaInterface{
+    public interface CinemasInterface{
         public void showCinema(Object o);
         public void showLikeCinema(Object o);
 
@@ -83,11 +83,7 @@ public interface ContractInterface {
         public void pToLogin(String phone , String pwd , String pwd2);
         //注册
         public void pToRegister(String nickName,int sex,String birthday,String phone,String email,String pwd,String pwd2);
-<<<<<<< HEAD
 
-        //推荐影院
-        public void pToRecommend(int userId,String sessionId,int page,int count);
-=======
         //推荐影院
         public void pToRecommend(int userId,String sessionId,int page,int count);
         //附近影院
@@ -102,9 +98,6 @@ public interface ContractInterface {
         public void pToEvaluateFragment(int cinemaId,int page ,int count);
         //详情页面评论点赞
         public void pToEvaluateFragmentGreat(int userId,String sessionId,int commentId);
-
-
->>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
         public void toHotMove();
         public void toMoving();
         public void toMoveCom();
@@ -123,8 +116,6 @@ public interface ContractInterface {
         public void toDownMovie(int sche,int amount,String sign);
         public void toPayMovie(int type,String order);
         public void onDestroy();
-<<<<<<< HEAD
-=======
     }
 
     //影院内部的接口调用
@@ -138,7 +129,6 @@ public interface ContractInterface {
         public void pToRAttention(int id,int userId,String sessionId);
         //不关注
         public void pToRNotAttention(int id,int userId,String sessionId);
->>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
     }
 
 }

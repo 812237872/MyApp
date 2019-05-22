@@ -22,7 +22,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         tt = t ;
         myModel = new MyModel();
     }
-
+    //登陆
     @Override
     public void pToLogin(String phone, String pwd, String pwd2) {
         myModel.setMyLogin(new MyModel.MyLogin() {
@@ -38,7 +38,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.mToLogin(phone,pwd,pwd2);
     }
-
+    //注册
     @Override
     public void pToRegister(String nickName, int sex, String birthday, String phone, String email, String pwd, String pwd2) {
         myModel.setMyRegister(new MyModel.MyRegister() {
@@ -58,10 +58,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
     @Override
     public void pToRecommend(int userId, String sessionId, int page,int count) {
 
-<<<<<<< HEAD
-
 //        myModel.mToRecommend(userId,sessionId,page,count);
-=======
         myModel.setMyRecommend(new MyModel.MyRecommend() {
             @Override
             public void Succeed(Object object) {
@@ -75,7 +72,6 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
             }
         });
         myModel.mToRecommend(userId,sessionId,page,count);
->>>>>>> 5bbf552e935f45a8024245a9b5d53291c4f2af38
     }
     //附近影院
     @Override
@@ -156,8 +152,6 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
                 List<EvaluateFragmentBean.ResultBean> result = evaluateFragmentBean.getResult();
                 ContractInterface.CinemaEvaluateFragment cinemaEvaluateFragment = (ContractInterface.CinemaEvaluateFragment) tt;
                 cinemaEvaluateFragment.showEvaluateFragment(result);
-
-
             }
             @Override
             public void error(Object object) {
@@ -180,7 +174,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.mToEvaluateFragmenGreat(userId, sessionId, commentId);
     }
-
+    //热门电影
     @Override
     public void toHotMove() {
         myModel.setMyRegister(new MyModel.MyRegister() {
@@ -196,7 +190,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.getHotMove();
     }
-
+    //正在热播
     @Override
     public void toMoving() {
         myModel.setMyLogin(new MyModel.MyLogin() {
@@ -212,7 +206,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.getMoving();
     }
-
+    //即将上映
     @Override
     public void toMoveCom() {
         myModel.setMyMoveCom(new MyModel.MyMoveCom() {
@@ -224,7 +218,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.getMoveCom();
     }
-
+    //关注电影
     @Override
     public void toLikeMove(int id) {
         myModel.setLikeMove(new MyModel.LikeMove() {
@@ -236,7 +230,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.likeMove(id);
     }
-
+    //取消关注电影
     @Override
     public void toNoLikeMove(int id) {
         myModel.setLikeMove(new MyModel.LikeMove() {
@@ -248,7 +242,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.disLikeMove(id);
     }
-
+    //电影详情
     @Override
     public void toMoveXiang(int id) {
         myModel.setLikeMove(new MyModel.LikeMove() {
@@ -260,7 +254,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.moveXiang(id);
     }
-
+    //电影 详细描述
     @Override
     public void toMoveXiangs(int id) {
         myModel.setMoveXiang(new MyModel.MoveXiang() {
@@ -272,7 +266,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.moveXiangs(id);
     }
-
+    //电影影评
     @Override
     public void toMoveYing(int id) {
         myModel.setMoveYings(new MyModel.MoveYings() {
@@ -284,7 +278,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.moveYing(id);
     }
-
+    //电影点赞
     @Override
     public void toMoveZan(int id) {
         myModel.setLikeMove(new MyModel.LikeMove() {
@@ -296,7 +290,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.moveZan(id);
     }
-
+    //取消电影点赞
     @Override
     public void toMovePing(int id, String com) {
         myModel.setLikeMove(new MyModel.LikeMove() {
@@ -308,41 +302,42 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.addMovePing(id,com);
     }
+    //根据电影名查电影院
     public void toCinema(int id){
         myModel.setLikeMove(new MyModel.LikeMove() {
             @Override
             public void Succeed(Object object) {
-                ContractInterface.CinemaInterface cinemaInterface= (ContractInterface.CinemaInterface) tt;
-                cinemaInterface.showCinema(object);
+                ContractInterface.CinemasInterface cinemasInterface= (ContractInterface.CinemasInterface) tt;
+                cinemasInterface.showCinema(object);
             }
         });
         myModel.getCinema(id);
     }
-
+    //关注电影院
     @Override
     public void toLikeCinema(int id) {
         myModel.setLikeMove(new MyModel.LikeMove() {
             @Override
             public void Succeed(Object object) {
-                ContractInterface.CinemaInterface cinemaInterface= (ContractInterface.CinemaInterface) tt;
-                cinemaInterface.showLikeCinema(object);
+                ContractInterface.CinemasInterface cinemasInterface= (ContractInterface.CinemasInterface) tt;
+                cinemasInterface.showLikeCinema(object);
             }
         });
         myModel.likeCinema(id);
     }
-
+    //取消关注电影院
     @Override
     public void toDisLikeCinema(int id) {
         myModel.setLikeMove(new MyModel.LikeMove() {
             @Override
             public void Succeed(Object object) {
-                ContractInterface.CinemaInterface cinemaInterface= (ContractInterface.CinemaInterface) tt;
-                cinemaInterface.showLikeCinema(object);
+                ContractInterface.CinemasInterface cinemasInterface= (ContractInterface.CinemasInterface) tt;
+                cinemasInterface.showLikeCinema(object);
             }
         });
         myModel.disLikeCinema(id);
     }
-
+    //根据电影id和影院id看电影排期
     @Override
     public void toMoveCinema(int cid, int id) {
         myModel.setLikeMove(new MyModel.LikeMove() {
@@ -354,7 +349,7 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.moveCinema(cid,id);
     }
-
+    //排期电影详情
     @Override
     public void toPlayMoveXiang(int id) {
         myModel.setMoveXiang(new MyModel.MoveXiang() {

@@ -23,6 +23,7 @@ import com.bw.movie.bean.DetailsBean;
 import com.bw.movie.bean.FlowBean;
 import com.bw.movie.cont.ContractInterface;
 import com.bw.movie.presenter.MyPresenter;
+import com.bw.movie.view.activity.GouActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -48,7 +49,9 @@ public class CinemaDetailsActivity extends AppCompatActivity implements Contract
     private CinemaDetailsFragment cinemaDetailsFragment;
     private CinemaEvaluateFragment cinemaEvaluateFragment;
     private RelativeLayout relativeLayout;
-
+    private String name;
+    private String address;
+    public String movename;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,10 +129,27 @@ public class CinemaDetailsActivity extends AppCompatActivity implements Contract
         adapter = new CinemaDetailsAdapter(this,list);
         xRecyclerView.setAdapter(adapter);
 
+        adapter.setListener(new CinemaDetailsAdapter.Listener() {
+            @Override
+            public void onClick(int i) {
+                Intent intent = new Intent(CinemaDetailsActivity.this, GouActivity.class);
+                intent.putExtra("name",name);
+                intent.putExtra("address",address);
+                intent.putExtra("pid",list.get(i).getId());
+                intent.putExtra("beginTime",list.get(i).getBeginTime());
+                intent.putExtra("endTime",list.get(i).getEndTime());
+                intent.putExtra("screeningHall",list.get(i).getScreeningHall());
+                intent.putExtra("price",list.get(i).getPrice());
+                intent.putExtra("movename",movename);
+                startActivity(intent);
+
+            }
+        });
+
         Intent intent = getIntent();
         final int cinemaId = intent.getIntExtra("cinemaId",0);
-        String name = intent.getStringExtra("name");
-        String address = intent.getStringExtra("address");
+        name = intent.getStringExtra("name");
+        address = intent.getStringExtra("address");
         String logo = intent.getStringExtra("logo");
 
         Bundle bundle = new Bundle();
@@ -150,9 +170,10 @@ public class CinemaDetailsActivity extends AppCompatActivity implements Contract
         //Log.e("错误+数据","影院id"+cinemaId);
         flowAdapter.setOnItemFlowClick(new RecyclerCoverFlowAdapter.OnItemFlowClick() {
             @Override
-            public void onItemClick(int position) {
+            public void onItemClick(int position,String name) {
                 presenterInterface.pToDetails(position,cinemaId);
                 //Log.e("错误+数据","id"+position+"影院id"+cinemaId);
+                movename=name;
                 list.clear();
 
             }

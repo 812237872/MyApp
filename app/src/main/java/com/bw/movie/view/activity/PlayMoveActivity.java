@@ -80,7 +80,7 @@ public class PlayMoveActivity extends AppCompatActivity implements ContractInter
                 intent.putExtra("endTime",endTime);
                 String screeningHall = list.get(i).getScreeningHall();
                 intent.putExtra("screeningHall",screeningHall);
-                float price = list.get(i).getPrice();
+                double price = list.get(i).getPrice();
                 intent.putExtra("price",price);
                 startActivity(intent);
             }
