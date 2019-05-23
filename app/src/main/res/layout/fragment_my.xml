@@ -178,7 +178,7 @@
                     <ImageView
                         android:id="@+id/mine_yijian"
                         android:layout_width="@dimen/dp_24"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/dp_24"
                         android:layout_marginLeft="@dimen/dp_30"
                         android:layout_marginTop="@dimen/dp_24"
                         android:background="@drawable/my_icon_rccord_default_hdpi" />

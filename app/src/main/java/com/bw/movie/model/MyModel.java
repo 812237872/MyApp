@@ -1,5 +1,8 @@
 package com.bw.movie.model;
 import android.util.Log;
+
+import com.bw.movie.bean.MyFragmentVipBean;
+import com.bw.movie.bean.MyMessageBean;
 import com.bw.movie.bean.hotmove.CinemaBean;
 import com.bw.movie.bean.hotmove.DownBean;
 import com.bw.movie.bean.hotmove.HotMoveBean;
@@ -15,6 +18,7 @@ import com.bw.movie.bean.EvaluateFragmentBean;
 import com.bw.movie.bean.FlowBean;
 import com.bw.movie.bean.NearbyBean;
 import com.bw.movie.bean.RecommendBean;
+import com.bw.movie.cont.ContractInterface;
 import com.bw.movie.util.Api;
 import com.bw.movie.util.RetrofitUtil;
 import com.bw.movie.util.UriCl;
@@ -52,6 +56,10 @@ public class MyModel {
     setDetailsFragment setDetailsFragment;
     setEvaluateFragment setEvaluateFragment;
     setEvaluateFragmentGreat setEvaluateFragmentGreat;
+    setMyVip setMyVip ;
+    setMySignl setMySignl ;
+    setMyMessage setMyMessage ;
+    SetResetPasswords  setResetPasswords;
 
     private final RetrofitUtil util;
     private final Api api;
@@ -387,6 +395,91 @@ public class MyModel {
                             String message = jsonObject.getString("message");
                             Log.e("a123", "call: " + message.toString());
                             setEvaluateFragmentGreat.Succeed(message);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+    //我的页面会员信息
+    public void mToMyVip(int userId ,String sessionId){
+        api.getMyFragmentVip(userId, sessionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"会员"+string);
+                            Gson gson = new Gson();
+                            MyFragmentVipBean myFragmentVipBean = gson.fromJson(string, MyFragmentVipBean.class);
+                            setMyVip.Succeed(myFragmentVipBean);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+
+    //我的页面签到
+    public void mToMySignl(int userId ,String sessionId){
+        api.getMyFragmentSignl(userId, sessionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"签到"+string);
+                            JSONObject jsonObject = new JSONObject(string);
+                            String message = jsonObject.getString("message");
+                            setMySignl.Succeed(message);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+    //我的页面我的个人信息
+    public void mToMessage(int userId ,String sessionId){
+        api.getMyMessage(userId, sessionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"个人信息"+string);
+                            Gson gson = new Gson();
+                            MyMessageBean myMessageBean = gson.fromJson(string, MyMessageBean.class);
+                            setMyMessage.Succeed(myMessageBean);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+
+    public void mToResetPasswords(int userId,String sessionId,String oldPwd,String newPwd,String newPwd2){
+        api.getResetPasswords(userId, sessionId, oldPwd, newPwd, newPwd2)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"个人信息"+string);
+                            JSONObject jsonObject = new JSONObject(string);
+                            String message = jsonObject.getString("message");
+                            setResetPasswords.Succeed(message);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -736,5 +829,36 @@ public class MyModel {
 
             public void error(Object object);
         }
-
-    }
+        //我的页面会员信息
+        public void setSetMyVip(setMyVip vip){
+            setMyVip = vip ;
+        }
+        public interface setMyVip{
+            public void Succeed(Object object);
+            public void error(Object object);
+        }
+        //我的页面签到
+        public void setSetMySignl(setMySignl signl){
+            setMySignl = signl ;
+        }
+        public interface setMySignl{
+            public void Succeed(Object object);
+            public void error(Object object);
+        }
+        //我的页面签到
+        public void setSetMyMessage(setMyMessage message){
+            setMyMessage = message;
+        }
+        public interface setMyMessage{
+            public void Succeed(Object object);
+            public void error(Object object);
+        }
+        //我的页面个人信息修改密码
+        public void setSetResetPasswords(SetResetPasswords passwords){
+            setResetPasswords = passwords ;
+        }
+        public interface SetResetPasswords{
+            public void Succeed(Object object);
+            public void error(Object object);
+        }
+}

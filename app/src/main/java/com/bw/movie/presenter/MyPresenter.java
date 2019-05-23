@@ -7,6 +7,7 @@ import com.bw.movie.bean.DetailsFragmentBean;
 import com.bw.movie.bean.DetailsBean;
 import com.bw.movie.bean.EvaluateFragmentBean;
 import com.bw.movie.bean.FlowBean;
+import com.bw.movie.bean.MyFragmentVipBean;
 import com.bw.movie.bean.NearbyBean;
 import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.cont.ContractInterface;
@@ -174,6 +175,68 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         });
         myModel.mToEvaluateFragmenGreat(userId, sessionId, commentId);
     }
+    //我的页面会员信息
+    @Override
+    public void pToMyFragmentVip(int userId, String sessionId) {
+        myModel.setSetMyVip(new MyModel.setMyVip() {
+            @Override
+            public void Succeed(Object object) {
+                ContractInterface.MyFragmentVip myFragmentVip = (ContractInterface.MyFragmentVip) tt;
+                myFragmentVip.showMyVip(object);
+            }
+            @Override
+            public void error(Object object) {
+            }
+        });
+        myModel.mToMyVip(userId, sessionId);
+    }
+    //我的页面签到
+    @Override
+    public void pToMyFragmentSignl(int userId, String sessionId) {
+        myModel.setSetMySignl(new MyModel.setMySignl() {
+            @Override
+            public void Succeed(Object object) {
+                ContractInterface.MyFragmentVip myFragmentVip = (ContractInterface.MyFragmentVip) tt;
+                myFragmentVip.showSignl(object);
+            }
+            @Override
+            public void error(Object object) {
+            }
+        });
+        myModel.mToMySignl(userId, sessionId);
+    }
+    //我的页面个人信息
+    @Override
+    public void pToMyMessage(int userId, String sessionId) {
+        myModel.setSetMyMessage(new MyModel.setMyMessage() {
+            @Override
+            public void Succeed(Object object) {
+                ContractInterface.MyMessage myMessage = (ContractInterface.MyMessage) tt;
+                myMessage.showMyMessage(object);
+            }
+            @Override
+            public void error(Object object) {
+            }
+        });
+        myModel.mToMessage(userId, sessionId);
+    }
+
+        //我的页面个人信息修改密码
+    @Override
+    public void pToResetPasswords(int userId, String sessionId, String oldPwd, String newPwd, String newPwd2) {
+        myModel.setSetResetPasswords(new MyModel.SetResetPasswords() {
+            @Override
+            public void Succeed(Object object) {
+                ContractInterface.ResetPasswords resetPasswords = (ContractInterface.ResetPasswords) tt;
+                resetPasswords.showMyPasswords(object);
+            }
+            @Override
+            public void error(Object object) {
+            }
+        });
+        myModel.mToResetPasswords(userId, sessionId, oldPwd, newPwd, newPwd2);
+    }
+
     //热门电影
     @Override
     public void toHotMove() {

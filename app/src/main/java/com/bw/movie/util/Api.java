@@ -90,11 +90,31 @@ public interface Api {
     public Observable<ResponseBody>
     getEvaluateFragment(@Query("cinemaId")int cinemaId,@Query("page")int page,@Query("count")int count);
     //详情页面评论点赞
-
     @FormUrlEncoded
     @POST("movieApi/cinema/v1/verify/cinemaCommentGreat")
     public Observable<ResponseBody>
     getgetEvaluateFragmentGreat(@Field("commentId") int commentId ,@Header("userId")int userId,@Header("sessionId")String sessionId);
+
+    //我的页面会员信息
+    @GET("movieApi/user/v1/verify/findUserHomeInfo")
+    public Observable<ResponseBody>
+    getMyFragmentVip(@Header("userId")int userId , @Header("sessionId")String sessionId);
+
+    //我的页面会员信息
+    @GET("movieApi/user/v1/verify/userSignIn")
+    public Observable<ResponseBody>
+    getMyFragmentSignl(@Header("userId")int userId , @Header("sessionId")String sessionId);
+    //我的页面个人信息
+    @GET("movieApi/user/v1/verify/getUserInfoByUserId")
+    public Observable<ResponseBody>
+    getMyMessage(@Header("userId")int userId , @Header("sessionId")String sessionId);
+
+    //我的页面个人信息
+    @FormUrlEncoded
+    @POST("movieApi/user/v1/verify/modifyUserPwd")
+    public Observable<ResponseBody>
+    getResetPasswords(@Header("userId")int userId , @Header("sessionId")String sessionId,
+                      @Field("oldPwd")String oldPwd,@Field("newPwd")String newPwd,@Field("newPwd2")String newPwd2);
 
 
 }

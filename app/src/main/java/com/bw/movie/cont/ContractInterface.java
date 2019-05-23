@@ -75,6 +75,21 @@ public interface ContractInterface {
 
         public void showEvaluateFragmentGreat(Object object);
     }
+    //我的页面会员信息
+    public interface MyFragmentVip{
+        public void showMyVip(Object object);
+        //我的页面签到
+        public void showSignl(Object object);
+    }
+
+    //我的页面个人信息
+    public interface MyMessage{
+        public void showMyMessage(Object object);
+    }
+    //我的页面个人信息修改密码
+    public interface ResetPasswords{
+        public void showMyPasswords(Object object);
+    }
 
 
     //P层接口
@@ -98,6 +113,14 @@ public interface ContractInterface {
         public void pToEvaluateFragment(int cinemaId,int page ,int count);
         //详情页面评论点赞
         public void pToEvaluateFragmentGreat(int userId,String sessionId,int commentId);
+        //我的页面会员信息
+        public void pToMyFragmentVip(int userId,String sessionId);
+        //我的页面签到
+        public void pToMyFragmentSignl(int userId,String sessionId);
+        //我的页面个人信息
+        public void pToMyMessage(int userId,String sessionId);
+        //我的页面个人信息修改密码
+        public void pToResetPasswords(int userId,String sessionId,String oldPwd,String newPwd,String newPwd2);
         public void toHotMove();
         public void toMoving();
         public void toMoveCom();
@@ -116,6 +139,7 @@ public interface ContractInterface {
         public void toDownMovie(int sche,int amount,String sign);
         public void toPayMovie(int type,String order);
         public void onDestroy();
+
     }
 
     //影院内部的接口调用
