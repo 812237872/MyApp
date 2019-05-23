@@ -14,6 +14,7 @@ android {
         release {
             keyAlias 'bw_movie'
             keyPassword '123456'
+            //杨明豪F:/Study/Training_one/gitH/MyApp/app/movie.keystore
             storeFile file('F:/Study/Training_one/gitH/MyApp/app/movie.keystore')
             storePassword '123456'
         }

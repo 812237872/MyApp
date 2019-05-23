@@ -11,6 +11,10 @@ import android.view.ViewGroup;
 import com.bw.movie.R;
 
 public class MyFragment extends Fragment {
+
+    private String sessionId;
+    private int userId;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -21,6 +25,12 @@ public class MyFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
+        sessionId = LoginActivity.sessionId;
+        userId = LoginActivity.userId;
+
+
 
     }
 }
