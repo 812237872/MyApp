@@ -67,8 +67,9 @@ public interface Api {
     //附近影院
     @GET("movieApi/cinema/v1/findNearbyCinemas")
     public Observable<ResponseBody>
-    getNearby(@Query("page")int page,@Query("count")int count,
-                 @Header("userId")int userId,@Header("sessionId")String sessionId);
+    getNearby(@Query("longitude")String longitude , @Query("latitude")String latitude ,
+              @Query("page")int page,@Query("count")int count,
+              @Header("userId")int userId,@Header("sessionId")String sessionId);
 
     //影院的详情页
     @GET("movieApi/movie/v1/findMovieScheduleList")
@@ -98,11 +99,43 @@ public interface Api {
     public Observable<ResponseBody>
     getEvaluateFragment(@Query("cinemaId")int cinemaId,@Query("page")int page,@Query("count")int count);
     //详情页面评论点赞
-
     @FormUrlEncoded
     @POST("movieApi/cinema/v1/verify/cinemaCommentGreat")
     public Observable<ResponseBody>
     getgetEvaluateFragmentGreat(@Field("commentId") int commentId ,@Header("userId")int userId,@Header("sessionId")String sessionId);
+
+    //我的页面会员信息
+    @GET("movieApi/user/v1/verify/findUserHomeInfo")
+    public Observable<ResponseBody>
+    getMyFragmentVip(@Header("userId")int userId , @Header("sessionId")String sessionId);
+
+    //我的页面会员信息
+    @GET("movieApi/user/v1/verify/userSignIn")
+    public Observable<ResponseBody>
+    getMyFragmentSignl(@Header("userId")int userId , @Header("sessionId")String sessionId);
+    //我的页面个人信息
+    @GET("movieApi/user/v1/verify/getUserInfoByUserId")
+    public Observable<ResponseBody>
+    getMyMessage(@Header("userId")int userId , @Header("sessionId")String sessionId);
+
+    //我的页面个人信息
+    @FormUrlEncoded
+    @POST("movieApi/user/v1/verify/modifyUserPwd")
+    public Observable<ResponseBody>
+    getResetPasswords(@Header("userId")int userId , @Header("sessionId")String sessionId,
+                      @Field("oldPwd")String oldPwd,@Field("newPwd")String newPwd,@Field("newPwd2")String newPwd2);
+    //我的页面个人信息
+    @FormUrlEncoded
+    @POST("movieApi/tool/v1/verify/recordFeedBack")
+    public Observable<ResponseBody>
+    getMyFeedBack(@Header("userId")int userId , @Header("sessionId")String sessionId,
+                      @Field("content")String content);
+
+    //影院搜索
+    @GET("movieApi/cinema/v1/findAllCinemas")
+    public Observable<ResponseBody>
+    getSousuo(
+              @Query("page") int page ,@Query("count") int count , @Query("cinemaName") String cinemaName);
 
 
 }

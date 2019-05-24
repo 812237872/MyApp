@@ -78,6 +78,28 @@ public interface ContractInterface {
 
         public void showEvaluateFragmentGreat(Object object);
     }
+    //我的页面会员信息
+    public interface MyFragmentVip{
+        public void showMyVip(Object object);
+        //我的页面签到
+        public void showSignl(Object object);
+    }
+
+    //我的页面个人信息
+    public interface MyMessage{
+        public void showMyMessage(Object object);
+    }
+    //我的页面个人信息修改密码
+    public interface ResetPasswords{
+        public void showMyPasswords(Object object);
+    }
+    //我的页面意见反馈
+    public interface MyFeedBack{
+        public void showMyFeedBack(Object object);
+    }
+    public interface CinemaFragment{
+        public void showSousuo(Object object);
+    }
 
 
     //P层接口
@@ -90,9 +112,11 @@ public interface ContractInterface {
         //推荐影院
         public void pToRecommend(int userId,String sessionId,int page,int count);
         //附近影院
-        public void pToNearby(int userId,String sessionId,int page,int count);
+        public void pToNearby(String longitude,String latitude ,int userId,String sessionId,int page,int count);
         //影院详情页面
         public void pToDetails(int cinemaId,int movield);
+        //影院搜索
+        public void pToSousuo(int userId,String sessionId,int  page, int count ,String cinemaName);
         //影院轮播图
         public void pToFlow(int cinemaId);
         //详情页面详情
@@ -101,6 +125,17 @@ public interface ContractInterface {
         public void pToEvaluateFragment(int cinemaId,int page ,int count);
         //详情页面评论点赞
         public void pToEvaluateFragmentGreat(int userId,String sessionId,int commentId);
+        //我的页面会员信息
+        public void pToMyFragmentVip(int userId,String sessionId);
+        //我的页面签到
+        public void pToMyFragmentSignl(int userId,String sessionId);
+        //我的页面个人信息
+        public void pToMyMessage(int userId,String sessionId);
+        //我的页面个人信息修改密码
+        public void pToResetPasswords(int userId,String sessionId,String oldPwd,String newPwd,String newPwd2);
+        //我的页面意见反馈
+        public void pToMyFeedBack(int userId,String sessionId,String content);
+
         public void toHotMove();
         public void toMoving();
         public void toMoveCom();
@@ -120,6 +155,7 @@ public interface ContractInterface {
         public void toPayMovie(int type,String order);
         public void toWxLogin(String code);
         public void onDestroy();
+
     }
 
     //影院内部的接口调用

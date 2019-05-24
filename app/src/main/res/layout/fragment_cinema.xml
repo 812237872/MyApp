@@ -6,6 +6,11 @@
     android:background="#FFFFFF"
     >
 
+    <com.bw.movie.view.MyViews
+        android:id="@+id/cinema_MyViews"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        />
     <RadioGroup
         android:id="@+id/cinema_RadioGroup"
         android:layout_width="wrap_content"
@@ -46,7 +51,7 @@
     </RadioGroup>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_weight="9.5"
+        android:layout_weight="8"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"

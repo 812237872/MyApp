@@ -196,7 +196,11 @@ public class CinemaDetailsActivity extends BaseActivity implements ContractInter
     public void showFlow(Object object) {
         FlowBean flowBean = (FlowBean) object;
         List<FlowBean.ResultBean> resultBeans = flowBean.getResult();
-        Flow_list.addAll(resultBeans);
+        if (resultBeans == null){
+
+        }else {
+            Flow_list.addAll(resultBeans);
+        }
         flowAdapter.notifyDataSetChanged();
     }
     @Override

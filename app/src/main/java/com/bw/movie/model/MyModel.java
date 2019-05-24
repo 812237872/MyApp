@@ -1,7 +1,13 @@
 package com.bw.movie.model;
 import android.util.Log;
 
+<<<<<<< HEAD
 import com.bw.movie.bean.WXBean;
+=======
+import com.bw.movie.bean.CinemaSousuoBean;
+import com.bw.movie.bean.MyFragmentVipBean;
+import com.bw.movie.bean.MyMessageBean;
+>>>>>>> origin/master
 import com.bw.movie.bean.hotmove.CinemaBean;
 import com.bw.movie.bean.hotmove.DownBean;
 import com.bw.movie.bean.hotmove.HotMoveBean;
@@ -17,11 +23,14 @@ import com.bw.movie.bean.EvaluateFragmentBean;
 import com.bw.movie.bean.FlowBean;
 import com.bw.movie.bean.NearbyBean;
 import com.bw.movie.bean.RecommendBean;
+import com.bw.movie.cont.ContractInterface;
 import com.bw.movie.util.Api;
 import com.bw.movie.util.RetrofitUtil;
 import com.bw.movie.util.UriCl;
 import com.bw.movie.view.LoginActivity;
 import com.google.gson.Gson;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
 import okhttp3.ResponseBody;
@@ -52,6 +61,12 @@ public class MyModel {
     setDetailsFragment setDetailsFragment;
     setEvaluateFragment setEvaluateFragment;
     setEvaluateFragmentGreat setEvaluateFragmentGreat;
+    setMyVip setMyVip ;
+    setMySignl setMySignl ;
+    setMyMessage setMyMessage ;
+    SetResetPasswords  setResetPasswords;
+    setMyFeedBack setMyFeedBack ;
+    setSousuo setSousuo ;
 
     private final RetrofitUtil util;
     private final Api api;
@@ -236,8 +251,8 @@ public class MyModel {
         }
 
     //附近影院
-    public void mToNearby ( int userId, String sessionId,int page, int count){
-        api.getNearby(page, count, userId, sessionId)
+    public void mToNearby (String longitude,String latitude , int userId, String sessionId,int page, int count){
+        api.getNearby(longitude,latitude,page, count, userId, sessionId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<ResponseBody>() {
@@ -328,11 +343,19 @@ public class MyModel {
                     public void call(ResponseBody responseBody) {
                         try {
                             String string = responseBody.string();
-                            //Log.e("AGE" ,"错误+i"+string);
-                            Gson gsond = new Gson();
-                            FlowBean flowBean = gsond.fromJson(string, FlowBean.class);
-                            setMyFlow.Succeed(flowBean);
+                            ///Log.e("AGE" ,"错误+i"+string);
+                            JSONObject jsonObject = new JSONObject(string);
+                            String status = jsonObject.getString("status");
+                            if (status == "1001"){
+                                setMyFlow.Succeed("");
+                            }else {
+                                Gson gsond = new Gson();
+                                FlowBean flowBean = gsond.fromJson(string, FlowBean.class);
+                                setMyFlow.Succeed(flowBean);
+                            }
                         } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
@@ -396,9 +419,137 @@ public class MyModel {
                             //Log.e("AGE" ,"额详情"+string);
                             JSONObject jsonObject = new JSONObject(string);
                             String message = jsonObject.getString("message");
-                            Log.e("a123", "call: " + message.toString());
+                            //Log.e("a123", "call: " + message.toString());
                             setEvaluateFragmentGreat.Succeed(message);
                         } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+    //我的页面会员信息
+    public void mToMyVip(int userId ,String sessionId){
+        api.getMyFragmentVip(userId, sessionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"会员"+string);
+                            Gson gson = new Gson();
+                            MyFragmentVipBean myFragmentVipBean = gson.fromJson(string, MyFragmentVipBean.class);
+                            setMyVip.Succeed(myFragmentVipBean);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+
+    //我的页面签到
+    public void mToMySignl(int userId ,String sessionId){
+        api.getMyFragmentSignl(userId, sessionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"签到"+string);
+                            JSONObject jsonObject = new JSONObject(string);
+                            String message = jsonObject.getString("message");
+                            setMySignl.Succeed(message);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+    //我的页面我的个人信息
+    public void mToMessage(int userId ,String sessionId){
+        api.getMyMessage(userId, sessionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"个人信息"+string);
+                            Gson gson = new Gson();
+                            MyMessageBean myMessageBean = gson.fromJson(string, MyMessageBean.class);
+                            setMyMessage.Succeed(myMessageBean);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+    //我的页面重置密码
+    public void mToResetPasswords(int userId,String sessionId,String oldPwd,String newPwd,String newPwd2){
+        api.getResetPasswords(userId, sessionId, oldPwd, newPwd, newPwd2)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"个人信息"+string);
+                            JSONObject jsonObject = new JSONObject(string);
+                            String message = jsonObject.getString("message");
+                            setResetPasswords.Succeed(message);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
+
+    //我的页面意见反馈
+    public void mToMyFeedBack(int userId,String sessionId,String content){
+        api.getMyFeedBack(userId, sessionId, content)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"意见反馈"+string);
+                            JSONObject jsonObject = new JSONObject(string);
+                            String message = jsonObject.getString("message");
+                            setMyFeedBack.Succeed(message);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    //电影院搜索
+    public void mToSousuo(int userId,String sessionId,int page,int count,String cinemaName){
+        api.getSousuo(page, count, cinemaName)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"影院搜索"+string);
+                            Gson gson = new Gson();
+                            CinemaSousuoBean sousuoBean = gson.fromJson(string, CinemaSousuoBean.class);
+                            setSousuo.Succeed(sousuoBean);
+                        } catch (IOException e) {
                             e.printStackTrace();
                         }
 
@@ -747,5 +898,52 @@ public class MyModel {
 
             public void error(Object object);
         }
-
-    }
+        //我的页面会员信息
+        public void setSetMyVip(setMyVip vip){
+            setMyVip = vip ;
+        }
+        public interface setMyVip{
+            public void Succeed(Object object);
+            public void error(Object object);
+        }
+        //我的页面签到
+        public void setSetMySignl(setMySignl signl){
+            setMySignl = signl ;
+        }
+        public interface setMySignl{
+            public void Succeed(Object object);
+            public void error(Object object);
+        }
+        //我的页面签到
+        public void setSetMyMessage(setMyMessage message){
+            setMyMessage = message;
+        }
+        public interface setMyMessage{
+            public void Succeed(Object object);
+            public void error(Object object);
+        }
+        //我的页面个人信息修改密码
+        public void setSetResetPasswords(SetResetPasswords passwords){
+            setResetPasswords = passwords ;
+        }
+        public interface SetResetPasswords{
+            public void Succeed(Object object);
+            public void error(Object object);
+        }
+        //我的页面意见反馈
+        public void setSetMyFeedBack(setMyFeedBack back){
+            setMyFeedBack = back ;
+        }
+        public interface setMyFeedBack{
+            public void Succeed(Object object);
+            public void error(Object object);
+        }
+        //影院搜索
+        public void setSetSousuo(setSousuo sousuo){
+            setSousuo = sousuo ;
+        }
+        public interface setSousuo{
+            public void Succeed(Object object);
+            public void error(Object object);
+        }
+}
