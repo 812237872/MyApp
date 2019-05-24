@@ -69,7 +69,8 @@
 
         <activity android:name=".view.MyFragment.MyMessageActivity" />
         <activity android:name=".view.MyMessageActivity" />
-        <activity android:name=".view.ResetPasswords"></activity>
+        <activity android:name=".view.ResetPasswords" />
+        <activity android:name=".view.MyFeedBack"></activity>
     </application>
 
 </manifest>

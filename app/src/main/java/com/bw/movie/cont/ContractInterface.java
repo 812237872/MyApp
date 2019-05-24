@@ -90,6 +90,13 @@ public interface ContractInterface {
     public interface ResetPasswords{
         public void showMyPasswords(Object object);
     }
+    //我的页面意见反馈
+    public interface MyFeedBack{
+        public void showMyFeedBack(Object object);
+    }
+    public interface CinemaFragment{
+        public void showSousuo(Object object);
+    }
 
 
     //P层接口
@@ -105,6 +112,8 @@ public interface ContractInterface {
         public void pToNearby(String longitude,String latitude ,int userId,String sessionId,int page,int count);
         //影院详情页面
         public void pToDetails(int cinemaId,int movield);
+        //影院搜索
+        public void pToSousuo(int userId,String sessionId,int  page, int count ,String cinemaName);
         //影院轮播图
         public void pToFlow(int cinemaId);
         //详情页面详情
@@ -121,6 +130,9 @@ public interface ContractInterface {
         public void pToMyMessage(int userId,String sessionId);
         //我的页面个人信息修改密码
         public void pToResetPasswords(int userId,String sessionId,String oldPwd,String newPwd,String newPwd2);
+        //我的页面意见反馈
+        public void pToMyFeedBack(int userId,String sessionId,String content);
+
         public void toHotMove();
         public void toMoving();
         public void toMoveCom();

@@ -115,6 +115,18 @@ public interface Api {
     public Observable<ResponseBody>
     getResetPasswords(@Header("userId")int userId , @Header("sessionId")String sessionId,
                       @Field("oldPwd")String oldPwd,@Field("newPwd")String newPwd,@Field("newPwd2")String newPwd2);
+    //我的页面个人信息
+    @FormUrlEncoded
+    @POST("movieApi/tool/v1/verify/recordFeedBack")
+    public Observable<ResponseBody>
+    getMyFeedBack(@Header("userId")int userId , @Header("sessionId")String sessionId,
+                      @Field("content")String content);
+
+    //影院搜索
+    @GET("movieApi/cinema/v1/findAllCinemas")
+    public Observable<ResponseBody>
+    getSousuo(
+              @Query("page") int page ,@Query("count") int count , @Query("cinemaName") String cinemaName);
 
 
 }

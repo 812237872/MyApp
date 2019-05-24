@@ -3,6 +3,7 @@ package com.bw.movie.presenter;
 import android.content.Context;
 import android.util.Log;
 
+import com.bw.movie.bean.CinemaSousuoBean;
 import com.bw.movie.bean.DetailsFragmentBean;
 import com.bw.movie.bean.DetailsBean;
 import com.bw.movie.bean.EvaluateFragmentBean;
@@ -108,6 +109,21 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
             }
         });
         myModel.mToDetails(cinemaId,movield);
+    }
+    //影院搜索
+    @Override
+    public void pToSousuo(int userId,String sessionId,int page, int count, String cinemaName) {
+        myModel.setSetSousuo(new MyModel.setSousuo() {
+            @Override
+            public void Succeed(Object object) {
+                ContractInterface.CinemaFragment cinemaFragment = (ContractInterface.CinemaFragment) tt;
+                cinemaFragment.showSousuo(object);
+            }
+            @Override
+            public void error(Object object) {
+            }
+        });
+        myModel.mToSousuo(userId,sessionId ,page, count, cinemaName);
     }
 
     @Override
@@ -235,6 +251,21 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
             }
         });
         myModel.mToResetPasswords(userId, sessionId, oldPwd, newPwd, newPwd2);
+    }
+    //我的页面意见反馈
+    @Override
+    public void pToMyFeedBack(int userId, String sessionId, String content) {
+        myModel.setSetMyFeedBack(new MyModel.setMyFeedBack() {
+            @Override
+            public void Succeed(Object object) {
+                ContractInterface.MyFeedBack myFeedBack = (ContractInterface.MyFeedBack) tt;
+                myFeedBack.showMyFeedBack(object);
+            }
+            @Override
+            public void error(Object object) {
+            }
+        });
+        myModel.mToMyFeedBack(userId, sessionId, content);
     }
 
     //热门电影

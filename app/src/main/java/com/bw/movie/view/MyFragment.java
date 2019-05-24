@@ -30,7 +30,7 @@ public class MyFragment extends Fragment implements ContractInterface.MyFragment
     private TextView mine_name;
     private Button qiandao;
     private ContractInterface.PresenterInterface presenterInterface;
-    private ImageView myinfo;
+    private ImageView myinfo,back_login,mine_like,mine_yijian;
 
     @Nullable
     @Override
@@ -41,7 +41,12 @@ public class MyFragment extends Fragment implements ContractInterface.MyFragment
         qiandao = view.findViewById(R.id.qiandao);
         //我的信息
         myinfo = view.findViewById(R.id.mine_myinfo);
-        //
+        //退出登录
+        back_login = view.findViewById(R.id.back_login);
+        //我的关注
+        mine_like = view.findViewById(R.id.mine_like);
+        //意见反馈
+        mine_yijian = view.findViewById(R.id.mine_yijian);
         return view;
     }
 
@@ -72,6 +77,23 @@ public class MyFragment extends Fragment implements ContractInterface.MyFragment
                 startActivity(intent);
             }
         });
+        //退出登录
+        back_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
+        mine_yijian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext() , MyFeedBack.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -89,4 +111,5 @@ public class MyFragment extends Fragment implements ContractInterface.MyFragment
     public void showSignl(Object object) {
         Toast.makeText(getContext(),object+"",Toast.LENGTH_SHORT).show();
     }
+
 }

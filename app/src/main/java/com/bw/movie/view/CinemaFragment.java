@@ -1,7 +1,9 @@
 package com.bw.movie.view;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,8 +17,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -24,13 +29,16 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bw.movie.R;
 import com.bw.movie.adapter.CinemaAdapter;
+import com.bw.movie.bean.CinemaSousuoBean;
+import com.bw.movie.cont.ContractInterface;
+import com.bw.movie.presenter.MyPresenter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class CinemaFragment extends Fragment {
+public class CinemaFragment extends Fragment implements ContractInterface.CinemaFragment {
 
     List<Fragment> list = new ArrayList<>();
     private String[] titles = {"推荐影院","附近影院"};
@@ -61,6 +69,8 @@ public class CinemaFragment extends Fragment {
                     //textView.setText(aMapLocation.getCity());
                     Date date = new Date(aMapLocation.getTime());
                     df.format(date);//定位时间
+                    locations.setText(aMapLocation.getCity());
+                    locations.setTextColor(Color.BLACK);
 
                     //Log.e("AGE","获取经度："+aMapLocation.getLongitude()+"获取伟度："+aMapLocation.getLatitude()+"地名："+aMapLocation.getCity().toString());
                 } else {
@@ -73,12 +83,24 @@ public class CinemaFragment extends Fragment {
             }
         }
     };
+    private MyViews myViews;
+    private TextView locations,sousuo;
+    private EditText edit_sousuo;
+    private ContractInterface.PresenterInterface presenterInterface;
+    private int id;
+    private String logo;
+    private String address;
+    private String name;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cinema, null);
         radioGroup = view.findViewById(R.id.cinema_RadioGroup);
+        myViews = view.findViewById(R.id.cinema_MyViews);
+        locations = myViews.findViewById(R.id.locations);
+        edit_sousuo = myViews.findViewById(R.id.search_edname);
+        sousuo = myViews.findViewById(R.id.search_textName);
         return view;
     }
 
@@ -88,6 +110,8 @@ public class CinemaFragment extends Fragment {
 
         cinemaNearby = new CinemaNearby();
         cinemaRecommend = new CinemaRecommend();
+
+        presenterInterface = new MyPresenter<>(this);
 
         manager = getFragmentManager();
         manager.beginTransaction()
@@ -137,6 +161,19 @@ public class CinemaFragment extends Fragment {
             }else {
                 mLocationClient.startLocation();
             }
+
+
+            sousuo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String s = edit_sousuo.getText().toString();
+                    if (s.equals("")){
+                        Toast.makeText(getContext(),"搜索内容不可为空",Toast.LENGTH_SHORT).show();
+                    }else {
+                        presenterInterface.pToSousuo(LoginActivity.userId,LoginActivity.sessionId ,1,10,s);
+                    }
+                }
+            });
     }
 
     @Override
@@ -148,5 +185,26 @@ public class CinemaFragment extends Fragment {
                 mLocationClient.startLocation();
             }
         }
+    }
+
+    @Override
+    public void showSousuo(Object object) {
+        CinemaSousuoBean cinemaSousuoBean = (CinemaSousuoBean) object;
+        List<CinemaSousuoBean.ResultBean> list = new ArrayList<>();
+        list.addAll(cinemaSousuoBean.getResult());
+        for (int i = 0; i <list.size() ; i++) {
+            id = list.get(i).getId();
+            logo = list.get(i).getLogo();
+            address = list.get(i).getAddress();
+            name = list.get(i).getName();
+        }
+
+
+        Intent intent = new Intent(getContext(),CinemaDetailsActivity.class);
+        intent.putExtra("cinemaId",id);
+        intent.putExtra("name",name);
+        intent.putExtra("address",address);
+        intent.putExtra("logo",logo);
+        startActivity(intent);
     }
 }
