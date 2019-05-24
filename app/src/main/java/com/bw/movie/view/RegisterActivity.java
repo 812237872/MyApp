@@ -77,4 +77,11 @@ public class RegisterActivity extends AppCompatActivity implements ContractInter
         }
 
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenterInterface.onDestroy();
+        presenterInterface=null;
+    }
 }

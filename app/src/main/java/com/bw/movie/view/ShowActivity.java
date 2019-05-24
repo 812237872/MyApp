@@ -7,13 +7,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.acitivity.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ShowActivity extends AppCompatActivity {
+public class ShowActivity extends BaseActivity {
 
     private FilmFragment filmFragment;
     private CinemaFragment cinemaFragment;
@@ -66,4 +68,5 @@ public class ShowActivity extends AppCompatActivity {
             }
         });
     }
+
 }

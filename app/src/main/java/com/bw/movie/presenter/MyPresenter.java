@@ -386,6 +386,23 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
         myModel.payMovie(type,order);
     }
 
+    @Override
+    public void toWxLogin(String code) {
+        myModel.setMyLogin(new MyModel.MyLogin() {
+            @Override
+            public void Succeed(Object object) {
+                ContractInterface.WxLoginInterface wxLoginInterface= (ContractInterface.WxLoginInterface) tt;
+                wxLoginInterface.showWxLogin(object);
+            }
+
+            @Override
+            public void error(Object object) {
+
+            }
+        });
+        myModel.toWxLogin(code);
+    }
+
 
     @Override
     public void onDestroy() {

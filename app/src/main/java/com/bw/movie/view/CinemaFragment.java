@@ -39,13 +39,16 @@ public class CinemaFragment extends Fragment {
     private CinemaNearby cinemaNearby;
     private CinemaRecommend cinemaRecommend;
     private FragmentManager manager;
-
+    public static String city;
 
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;
 
     //声明定位回调监听器
     public AMapLocationListener mLocationListener = new AMapLocationListener() {
+
+
+
         @Override
         public void onLocationChanged(AMapLocation aMapLocation) {
             if (aMapLocation != null) {
@@ -59,7 +62,8 @@ public class CinemaFragment extends Fragment {
                     //textView.setText(aMapLocation.getCity());
                     Date date = new Date(aMapLocation.getTime());
                     df.format(date);//定位时间
-
+                    city = aMapLocation.getCity();
+                    MyViews.init(city);
                     Log.e("AGE","获取经度："+aMapLocation.getLongitude()+"获取伟度："+aMapLocation.getLatitude()+"地名："+aMapLocation.getCity().toString());
                 } else {
                     //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
@@ -121,7 +125,7 @@ public class CinemaFragment extends Fragment {
             //设置定位模式为AMapLocationMode.Hight_Accuracy，高精度模式。
             option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
             //设置定位间隔,单位毫秒,默认为2000ms，最低1000ms。
-            option.setInterval(1000);
+            option.setInterval(60000);
             mLocationClient.setLocationOption(option);
 
             int selfPermission = ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION);
@@ -147,4 +151,5 @@ public class CinemaFragment extends Fragment {
             }
         }
     }
+
 }

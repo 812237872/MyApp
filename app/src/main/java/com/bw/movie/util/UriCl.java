@@ -20,6 +20,7 @@ public class UriCl {
     public static String cinemamove="movieApi/movie/v1/findMovieScheduleList";
     public static String downmove="movieApi/movie/v1/verify/buyMovieTicket";
     public static String pay="movieApi/movie/v1/verify/pay";
+    public static String wxlogin="movieApi/user/v1/weChatBindingLogin";
 
 
 //    public static String getBase = "http://172.17.8.100/";

@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.bw.movie.R;
+import com.bw.movie.acitivity.BaseActivity;
 import com.bw.movie.adapter.MovePageAdapter;
 import com.bw.movie.view.fragment.ComMoveFragment;
 import com.bw.movie.view.fragment.HotMoveFragment;
@@ -21,7 +22,7 @@ import com.bw.movie.view.fragment.MovingFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SreachActivity extends AppCompatActivity {
+public class SreachActivity extends BaseActivity {
 
     RadioGroup rp;
     ViewPager vp;

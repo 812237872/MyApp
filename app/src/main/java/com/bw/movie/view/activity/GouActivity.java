@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.acitivity.BaseActivity;
 import com.bw.movie.bean.hotmove.DownBean;
 import com.bw.movie.bean.hotmove.PayBean;
 import com.bw.movie.cont.ContractInterface;
@@ -23,15 +24,15 @@ import com.bw.movie.presenter.MyPresenter;
 import com.bw.movie.util.EncryptUtil;
 import com.bw.movie.view.LoginActivity;
 import com.bw.movie.view.SeatTable;
-import com.tencent.mm.opensdk.modelpay.PayReq;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.tencent.mm.sdk.modelpay.PayReq;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class GouActivity extends AppCompatActivity implements ContractInterface.GouInterface {
+public class GouActivity extends BaseActivity implements ContractInterface.GouInterface {
     SeatTable seatTable;
     TextView gou_name,gou_address,gou_movename,gou_time,text_ting,gou_price;
     ImageView img_cancel,img_sure;
@@ -276,5 +277,11 @@ public class GouActivity extends AppCompatActivity implements ContractInterface.
 
         payThread.start();
 
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenterInterface.onDestroy();
+        presenterInterface=null;
     }
 }

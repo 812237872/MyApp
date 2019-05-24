@@ -8,6 +8,8 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -20,6 +22,9 @@ import com.bw.movie.bean.user.LoginBean;
 import com.bw.movie.cont.ContractInterface;
 import com.bw.movie.presenter.MyPresenter;
 import com.bw.movie.util.EncryptUtil;
+import com.tencent.mm.sdk.modelmsg.SendAuth;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,6 +49,9 @@ public class LoginActivity extends AppCompatActivity implements ContractInterfac
     private boolean b = true ;
     public static String sessionId;
     public static int userId;
+    // 微信登录
+    private static IWXAPI WXapi;
+    private String WX_APP_ID = "wxb3852e6a6b7d9516";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +108,15 @@ public class LoginActivity extends AppCompatActivity implements ContractInterfac
             }
         });
 
+        imager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WXLogin();
+            }
+        });
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 
     }
@@ -135,5 +152,25 @@ public class LoginActivity extends AppCompatActivity implements ContractInterfac
                 }
             }
         });
+    }
+
+    /**
+     * 登录微信
+     */
+    private void WXLogin() {
+        WXapi = WXAPIFactory.createWXAPI(this, WX_APP_ID, true);
+        WXapi.registerApp(WX_APP_ID);
+        SendAuth.Req req = new SendAuth.Req();
+        req.scope = "snsapi_userinfo";
+        req.state = "wechat_sdk_demo";
+        WXapi.sendReq(req);
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenterInterface.onDestroy();
+        presenterInterface=null;
     }
 }

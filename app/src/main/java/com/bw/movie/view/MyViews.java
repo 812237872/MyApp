@@ -32,7 +32,7 @@ public class MyViews extends LinearLayout implements View.OnClickListener{
     public ImageView search_image;
     public EditText search_edname;
     public TextView search_textName;
-    public TextView locations;
+    public static TextView locations;
     public RelativeLayout searchLinear;
     public ImageView dingwei;
     private AutoTransition transition;
@@ -57,12 +57,15 @@ public class MyViews extends LinearLayout implements View.OnClickListener{
         search_image.setOnClickListener(this);
         search_textName.setOnClickListener(this);
         dingwei.setOnClickListener(this);
+
     }
 
     public MyViews(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-
+    public static  void init(String city){
+        locations.setText(city);
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

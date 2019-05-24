@@ -117,4 +117,11 @@ public class CinemaNearby extends Fragment implements ContractInterface.CinemaNe
     public void showNotAttention(Object object) {
         Toast.makeText(getActivity(),"不关注："+object,Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenterInterface.onDestroy();
+        presenterInterface=null;
+    }
 }

@@ -27,6 +27,7 @@ import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
+import com.bw.movie.acitivity.BaseActivity;
 import com.bw.movie.adapter.MyListAdapter;
 import com.bw.movie.adapter.MyRecycleStaggerAdapter;
 import com.bw.movie.adapter.MyYRecAdapter;
@@ -43,7 +44,7 @@ import com.bw.movie.presenter.MyPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoveXiangActivity extends AppCompatActivity implements ContractInterface.MoveXiangInterface,ContractInterface.ShowInterface.LikeMoveInterface{
+public class MoveXiangActivity extends BaseActivity implements ContractInterface.MoveXiangInterface,ContractInterface.ShowInterface.LikeMoveInterface{
     TextView text_x,text_name,text_xiang,text_yu,text_ju,text_ying,text_gou;
     ImageView img_move,img_back;
     CheckBox check_collect;

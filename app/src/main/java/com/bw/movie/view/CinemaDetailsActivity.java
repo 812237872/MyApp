@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.acitivity.BaseActivity;
 import com.bw.movie.adapter.CinemaDetailsAdapter;
 import com.bw.movie.adapter.RecyclerCoverFlowAdapter;
 import com.bw.movie.bean.DetailsBean;
@@ -33,7 +34,7 @@ import java.util.List;
 import recycler.coverflow.CoverFlowLayoutManger;
 import recycler.coverflow.RecyclerCoverFlow;
 
-public class CinemaDetailsActivity extends AppCompatActivity implements ContractInterface.CinemaDetails {
+public class CinemaDetailsActivity extends BaseActivity implements ContractInterface.CinemaDetails {
 
     TextView Text_name , Text_address ;
     SimpleDraweeView imageView ;
@@ -197,5 +198,11 @@ public class CinemaDetailsActivity extends AppCompatActivity implements Contract
         List<FlowBean.ResultBean> resultBeans = flowBean.getResult();
         Flow_list.addAll(resultBeans);
         flowAdapter.notifyDataSetChanged();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenterInterface.onDestroy();
+        presenterInterface=null;
     }
 }

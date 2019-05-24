@@ -12,6 +12,9 @@ public interface ContractInterface {
     public interface RegisterInterface{
         public void showRegister(Object object);
     }
+    public interface WxLoginInterface{
+        public void showWxLogin(Object o);
+    }
     //展示页面
     public interface ShowInterface{
         public void showHotMove(Object o);
@@ -115,6 +118,7 @@ public interface ContractInterface {
         public void toPlayMoveXiang(int id);
         public void toDownMovie(int sche,int amount,String sign);
         public void toPayMovie(int type,String order);
+        public void toWxLogin(String code);
         public void onDestroy();
     }
 

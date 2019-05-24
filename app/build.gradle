@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -9,12 +9,17 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        greendao {
+            schemaVersion 1
+            daoPackage 'com.bw.movie.greendao.gen'
+            targetGenDir 'src/main/java'
+        }
     }
     signingConfigs {
         release {
             keyAlias 'bw_movie'
             keyPassword '123456'
-            storeFile file('d:/MyApp/app/movie.keystore')
+            storeFile file('d:/MyApp/movie.keystore')
             storePassword '123456'
         }
     }
@@ -25,11 +30,11 @@ android {
             signingConfig signingConfigs.release
         }
 
-    debug {
-        minifyEnabled false
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        signingConfig signingConfigs.release
-    }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
     }
 }
 
@@ -61,13 +66,13 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
-
+    implementation 'org.greenrobot:greendao:3.1.0'
+    implementation 'org.greenrobot:greendao-generator:3.1.0'
     //TableLayout需要的插件
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
 
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
-
     //ditu
     implementation 'com.amap.api:location:4.6.0'
+
 }

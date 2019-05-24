@@ -100,4 +100,10 @@ public class CinemaEvaluateFragment extends Fragment implements ContractInterfac
     public void showEvaluateFragmentGreat(Object object) {
         Toast.makeText(getContext(),""+object,Toast.LENGTH_SHORT).show();
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenterInterface.onDestroy();
+        presenterInterface=null;
+    }
 }

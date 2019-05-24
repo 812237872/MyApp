@@ -73,4 +73,10 @@ public class CinemaDetailsFragment extends Fragment implements ContractInterface
         Text_phone.setText(phone);
         viewById.setText(vehicleRoute);
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenterInterface.onDestroy();
+        presenterInterface=null;
+    }
 }

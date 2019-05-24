@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.acitivity.BaseActivity;
 import com.bw.movie.adapter.MyCRecAdapter;
 import com.bw.movie.bean.hotmove.Cinema;
 import com.bw.movie.bean.hotmove.CinemaBean;
@@ -20,7 +21,7 @@ import com.bw.movie.presenter.MyPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CinemaActivity extends AppCompatActivity implements ContractInterface.CinemasInterface {
+public class CinemaActivity extends BaseActivity implements ContractInterface.CinemasInterface {
 
     private int id;
     private String name;
@@ -90,5 +91,12 @@ public class CinemaActivity extends AppCompatActivity implements ContractInterfa
         String s= (String) o;
         Toast.makeText(this,s,Toast.LENGTH_LONG).show();
         init();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenterInterface.onDestroy();
+        presenterInterface=null;
     }
 }

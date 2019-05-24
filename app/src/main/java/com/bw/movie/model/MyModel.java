@@ -1,5 +1,7 @@
 package com.bw.movie.model;
 import android.util.Log;
+
+import com.bw.movie.bean.WXBean;
 import com.bw.movie.bean.hotmove.CinemaBean;
 import com.bw.movie.bean.hotmove.DownBean;
 import com.bw.movie.bean.hotmove.HotMoveBean;
@@ -71,6 +73,25 @@ public class MyModel {
                             Gson gson = new Gson();
                             LoginBean loginBean = gson.fromJson(string, LoginBean.class);
                             myLogin.Succeed(loginBean);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    public void toWxLogin(String code){
+        api.wxLogin(UriCl.wxlogin,code)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Gson gson = new Gson();
+                            WXBean wxBean = gson.fromJson(string, WXBean.class);
+                            myLogin.Succeed(wxBean);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

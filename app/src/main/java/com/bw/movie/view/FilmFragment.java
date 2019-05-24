@@ -136,7 +136,10 @@ public class FilmFragment extends Fragment implements ContractInterface.ShowInte
     public void showHotMove(Object o) {
         HotMoveBean hotMoveBean= (HotMoveBean) o;
         List<HotMove> result = hotMoveBean.getResult();
-        list.addAll(result);
+        if(result!=null){
+            list.addAll(result);
+        }
+
         //让轮播图显示中间的图片
         recyclerCoverFlow.smoothScrollToPosition(list.size()/2);
         cinemaFlowAdapter.notifyDataSetChanged();
@@ -147,7 +150,10 @@ public class FilmFragment extends Fragment implements ContractInterface.ShowInte
     public void showMoving(Object o) {
         HotMoveBean hotMoveBean= (HotMoveBean) o;
         List<HotMove> result = hotMoveBean.getResult();
-        list_mg.addAll(result);
+        if(result!=null){
+            list_mg.addAll(result);
+        }
+
         myRecAdapter_2.notifyDataSetChanged();
     }
 
@@ -155,12 +161,22 @@ public class FilmFragment extends Fragment implements ContractInterface.ShowInte
     public void showMoveCom(Object o) {
         HotMoveBean hotMoveBean= (HotMoveBean) o;
         List<HotMove> result = hotMoveBean.getResult();
+        if(result!=null){
         list_com.addAll(result);
+        }
+
         myRecAdapter_3.notifyDataSetChanged();
     }
 
     @Override
     public void showLikeMove(Object o) {
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenterInterface.onDestroy();
+        presenterInterface=null;
     }
 }

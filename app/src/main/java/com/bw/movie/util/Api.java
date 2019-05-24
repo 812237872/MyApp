@@ -40,17 +40,26 @@ public interface Api {
 
     @GET
     Observable<ResponseBody> moveCinema(@Url String url, @Header("userId") int userId, @Header("sessionId") String session,@Query("cinemasId") int cid,@Query("movieId") int id);
+
     @FormUrlEncoded
     @POST
     Observable<ResponseBody> zanMove(@Url String url, @Header("userId") int userId, @Header("sessionId") String session,@Field("commentId") int id);
+
     @GET
     Observable<ResponseBody> moveYing(@Url String url, @Header("userId") int userId, @Header("sessionId") String session, @Query("page") int page, @Query("count") int count,@Query("movieId") int id);
+
     @FormUrlEncoded
     @POST
     Observable<ResponseBody> addMovePing(@Url String url, @Header("userId") int userId, @Header("sessionId") String session,@Field("movieId") int id,@Field("commentContent") String com);
+
     @FormUrlEncoded
     @POST
     Observable<ResponseBody> downMovie(@Url String url, @Header("userId") int userid,@Header("sessionId") String session,@Field("scheduleId") int scheduleId,@Field("amount") int amount,@Field("sign") String sign);
+
+
+    @FormUrlEncoded
+    @POST
+    Observable<ResponseBody> wxLogin(@Url String url,@Field("code") String appId);
 
     @FormUrlEncoded
     @POST

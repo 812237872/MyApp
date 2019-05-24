@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
+import com.bw.movie.acitivity.BaseActivity;
 import com.bw.movie.adapter.MyPRecAdapter;
 import com.bw.movie.bean.hotmove.MoveCinema;
 import com.bw.movie.bean.hotmove.MoveCinemaBean;
@@ -21,7 +22,7 @@ import com.bw.movie.presenter.MyPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayMoveActivity extends AppCompatActivity implements ContractInterface.PlayMoveInterface {
+public class PlayMoveActivity extends BaseActivity implements ContractInterface.PlayMoveInterface {
 
     private int id;
     private int cid;
@@ -80,7 +81,7 @@ public class PlayMoveActivity extends AppCompatActivity implements ContractInter
                 intent.putExtra("endTime",endTime);
                 String screeningHall = list.get(i).getScreeningHall();
                 intent.putExtra("screeningHall",screeningHall);
-                double price = list.get(i).getPrice();
+                double   price = list.get(i).getPrice();
                 intent.putExtra("price",price);
                 startActivity(intent);
             }
@@ -106,5 +107,11 @@ public class PlayMoveActivity extends AppCompatActivity implements ContractInter
         List<MoveCinema> result = moveCinemaBean.getResult();
         list.addAll(result);
         myPRecAdapter.notifyDataSetChanged();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenterInterface.onDestroy();
+        presenterInterface=null;
     }
 }
