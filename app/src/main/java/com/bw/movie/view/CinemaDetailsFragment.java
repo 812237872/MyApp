@@ -64,7 +64,7 @@ public class CinemaDetailsFragment extends Fragment implements ContractInterface
     @Override
     public void showDetailsFragment(Object object) {
 
-        Log.e("AGE" ,"数据"+object);
+        //Log.e("AGE" ,"数据"+object);
         DetailsFragmentBean.ResultBean resultBean  = (DetailsFragmentBean.ResultBean) object;
         String address = resultBean.getAddress();
         String phone = resultBean.getPhone();

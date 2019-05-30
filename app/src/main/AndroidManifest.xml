@@ -42,17 +42,12 @@
             android:name="com.amap.api.v2.apikey"
             android:value="a6db8b911757d1b9a4fd94ab9603bc5e" />
 
-<<<<<<< HEAD
         <activity
             android:name=".acitivity.MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".acitivity.NavigationActivity"
             android:screenOrientation="portrait">
-=======
-        <activity android:name=".acitivity.MainActivity" />
-        <activity android:name=".acitivity.NavigationActivity">
->>>>>>> origin/master
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -61,7 +56,6 @@
         </activity>
         <activity
             android:name=".view.LoginActivity"
-<<<<<<< HEAD
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
@@ -109,28 +103,11 @@
         <activity android:name=".view.activity.NotNetActivity"
             android:launchMode="singleInstance"
             ></activity>
-=======
-            android:launchMode="singleTask" />
-        <activity android:name=".view.RegisterActivity" />
-        <activity android:name=".view.ShowActivity" />
-        <activity android:name=".view.activity.SreachActivity" />
-        <activity android:name=".view.activity.MoveXiangActivity" />
-        <activity android:name=".view.activity.CinemaActivity" />
-        <activity android:name=".view.activity.PlayMoveActivity" />
-        <activity android:name=".view.activity.GouActivity" />
-        <activity
-            android:name=".wxapi.WXPayEntryActivity"
-            android:exported="true"
-            android:launchMode="singleTop" />
-        <activity android:name=".view.CinemaDetailsActivity" />
-
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".view.MyFragment.MyMessageActivity" />
         <activity android:name=".view.MyMessageActivity" />
         <activity android:name=".view.ResetPasswords" />
         <activity android:name=".view.MyFeedBack"></activity>
->>>>>>> origin/master
     </application>
 
 </manifest>

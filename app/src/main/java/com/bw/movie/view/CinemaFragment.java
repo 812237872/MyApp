@@ -47,22 +47,15 @@ public class CinemaFragment extends Fragment implements ContractInterface.Cinema
     private CinemaNearby cinemaNearby;
     private CinemaRecommend cinemaRecommend;
     private FragmentManager manager;
-<<<<<<< HEAD
     public static String city;
-=======
     public static double latitude ;
     public static double longitude ;
 
->>>>>>> origin/master
 
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;
-
     //声明定位回调监听器
     public AMapLocationListener mLocationListener = new AMapLocationListener() {
-
-
-
         @Override
         public void onLocationChanged(AMapLocation aMapLocation) {
             if (aMapLocation != null) {
@@ -76,16 +69,13 @@ public class CinemaFragment extends Fragment implements ContractInterface.Cinema
                     //textView.setText(aMapLocation.getCity());
                     Date date = new Date(aMapLocation.getTime());
                     df.format(date);//定位时间
-<<<<<<< HEAD
                     city = aMapLocation.getCity();
                     MyViews.init(city);
                     Log.e("AGE","获取经度："+aMapLocation.getLongitude()+"获取伟度："+aMapLocation.getLatitude()+"地名："+aMapLocation.getCity().toString());
-=======
                     locations.setText(aMapLocation.getCity());
                     locations.setTextColor(Color.BLACK);
 
                     //Log.e("AGE","获取经度："+aMapLocation.getLongitude()+"获取伟度："+aMapLocation.getLatitude()+"地名："+aMapLocation.getCity().toString());
->>>>>>> origin/master
                 } else {
                     //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
                     /*Log.e("AmapError", "location Error, ErrCode:"
@@ -200,8 +190,6 @@ public class CinemaFragment extends Fragment implements ContractInterface.Cinema
         }
     }
 
-<<<<<<< HEAD
-=======
     @Override
     public void showSousuo(Object object) {
         CinemaSousuoBean cinemaSousuoBean = (CinemaSousuoBean) object;
@@ -222,5 +210,4 @@ public class CinemaFragment extends Fragment implements ContractInterface.Cinema
         intent.putExtra("logo",logo);
         startActivity(intent);
     }
->>>>>>> origin/master
 }

@@ -23,11 +23,7 @@
         <RadioButton
             android:id="@+id/Ashow_Radio1"
             android:background="@drawable/fragment_film"
-<<<<<<< HEAD
-            android:layout_width="@dimen/dp_50"
-=======
             android:layout_width="@dimen/dp_60"
->>>>>>> origin/master
             android:layout_height="@dimen/dp_60"
             android:layout_marginRight="@dimen/dp_20"
             android:layout_marginLeft="@dimen/dp_20"
@@ -37,11 +33,7 @@
         <RadioButton
             android:id="@+id/Ashow_Radio2"
             android:background="@drawable/fragment_cinema"
-<<<<<<< HEAD
-            android:layout_width="@dimen/dp_50"
-=======
             android:layout_width="@dimen/dp_60"
->>>>>>> origin/master
             android:layout_height="@dimen/dp_60"
             android:layout_marginRight="@dimen/dp_20"
             android:layout_marginLeft="@dimen/dp_20"
@@ -50,11 +42,7 @@
         <RadioButton
             android:id="@+id/Ashow_Radio3"
             android:background="@drawable/fragment_my"
-<<<<<<< HEAD
-            android:layout_width="@dimen/dp_50"
-=======
             android:layout_width="@dimen/dp_60"
->>>>>>> origin/master
             android:layout_height="@dimen/dp_60"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"

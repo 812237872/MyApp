@@ -1,13 +1,10 @@
 package com.bw.movie.model;
 import android.util.Log;
 
-<<<<<<< HEAD
 import com.bw.movie.bean.WXBean;
-=======
 import com.bw.movie.bean.CinemaSousuoBean;
 import com.bw.movie.bean.MyFragmentVipBean;
 import com.bw.movie.bean.MyMessageBean;
->>>>>>> origin/master
 import com.bw.movie.bean.hotmove.CinemaBean;
 import com.bw.movie.bean.hotmove.DownBean;
 import com.bw.movie.bean.hotmove.HotMoveBean;
