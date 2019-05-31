@@ -227,13 +227,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp">
+        android:layout_height="match_parent">
         <ImageView
             android:id="@+id/my_user_back"
             android:layout_marginLeft="@dimen/dp_34"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="@dimen/dp_50"
             android:layout_width="@dimen/dp_50"
             android:layout_height="@dimen/dp_50"
+
             android:background="@drawable/com_icon_return_default_hdpi"/>
     </RelativeLayout>
 </LinearLayout>

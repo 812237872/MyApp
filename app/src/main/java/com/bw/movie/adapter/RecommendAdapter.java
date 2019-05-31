@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bw.movie.R;
@@ -125,7 +126,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.hold
         SimpleDraweeView simpleDraweeView ;
         TextView name , address ,distance ;
         CheckBox imageView ;
-        LinearLayout linearLayout;
+        RelativeLayout linearLayout;
 
         public holder(@NonNull View itemView) {
             super(itemView);

@@ -1,62 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="550dp"
-    android:layout_gravity="center"
-    android:layout_height="150dp"
-    android:layout_marginBottom="40dp"
-
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/RecommendAdapter_LinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     >
 
-
-    <LinearLayout
-        android:id="@+id/RecommendAdapter_LinearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="125dp"
-        android:layout_marginBottom="15dp"
-        android:orientation="horizontal"
-        android:elevation="5dp"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="@dimen/dp_312"
+        android:layout_height="@dimen/dp_90"
+        android:layout_centerInParent="true"
         android:background="@drawable/shape_recommendadapter">
+
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/RecommendAdapter_SimpleDraweeView"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/RecommendAdapter_name"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_70"
+            app:roundedCornerRadius="@dimen/dp_4"
+            android:layout_marginLeft="@dimen/dp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+
+            app:layout_constraintBottom_toBottomOf="@id/RecommendAdapter_SimpleDraweeView"
+            app:layout_constraintLeft_toRightOf="@id/RecommendAdapter_SimpleDraweeView"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/RecommendAdapter_SimpleDraweeView">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/RecommendAdapter_address"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <RelativeLayout
-                android:layout_width="410dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/RecommendAdapter_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="大地电影"
+                    android:singleLine="true"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:id="@+id/RecommendAdapter_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="大地电影"
+                    android:singleLine="true"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/sp_12" />
+            </LinearLayout>
+            <!--距离-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/dp_10">
+
                 <TextView
                     android:id="@+id/RecommendAdapter_distance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                    android:textColor="#333333"
+                    android:textSize="@dimen/sp_12" />
+                <!--点赞关注-->
                 <CheckBox
                     android:id="@+id/RecommendAdapter_CheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="180dp"
+                    android:layout_width="@dimen/dp_16"
+                    android:layout_height="@dimen/dp_16"
                     android:button="@null"
+                    android:layout_alignParentRight="true"
                     android:background="@drawable/selector_recommend"/>
+                />
             </RelativeLayout>
-        </LinearLayout>
-    </LinearLayout>
+        </RelativeLayout>
 
-</LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+
+
+</RelativeLayout>

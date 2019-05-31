@@ -3,22 +3,22 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="#FFFFFF"
     >
 
     <com.bw.movie.view.MyViews
         android:id="@+id/cinema_MyViews"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/dp_60"
         />
     <RadioGroup
         android:id="@+id/cinema_RadioGroup"
         android:layout_width="wrap_content"
         android:orientation="horizontal"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/dp_40"
         android:layout_gravity="center"
-        android:paddingTop="8dp"
-        android:layout_weight="0.5">
+        android:paddingTop="8dp">
         <RadioButton
             android:id="@+id/cinema_Radio1"
             android:layout_width="wrap_content"
@@ -47,14 +47,15 @@
             android:paddingBottom="5dp"
             android:button="@null"
             android:text="附近影院"
+
             />
     </RadioGroup>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_weight="8"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
         android:id="@+id/cinema_FrameLayout"></FrameLayout>
 
 </LinearLayout>

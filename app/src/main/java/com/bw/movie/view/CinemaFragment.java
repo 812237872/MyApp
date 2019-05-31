@@ -104,6 +104,7 @@ public class CinemaFragment extends Fragment implements ContractInterface.Cinema
         locations = myViews.findViewById(R.id.locations);
         edit_sousuo = myViews.findViewById(R.id.search_edname);
         sousuo = myViews.findViewById(R.id.search_textName);
+
         return view;
     }
 

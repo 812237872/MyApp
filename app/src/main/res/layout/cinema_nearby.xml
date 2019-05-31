@@ -6,10 +6,9 @@
     android:layout_gravity="center"
     >
     <com.jcodecraeer.xrecyclerview.XRecyclerView
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="8"
         android:id="@+id/Nearby_XRecyclerView"></com.jcodecraeer.xrecyclerview.XRecyclerView>
 
 </LinearLayout>

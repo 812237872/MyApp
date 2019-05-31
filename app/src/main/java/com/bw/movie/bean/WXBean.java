@@ -2,6 +2,7 @@ package com.bw.movie.bean;
 
 public class WXBean {
     public WX result;
+
     public String message;
 
     public WXBean(WX result, String message) {

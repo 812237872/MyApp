@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="@dimen/dp_200"
         android:background="@drawable/cinema_details">
         <RelativeLayout
             android:id="@+id/cinema_details_RelativeLayout"
@@ -14,10 +14,10 @@
             android:layout_height="wrap_content">
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/cinema_details_logo"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="40dp"
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="@dimen/dp_70"
+                android:layout_marginLeft="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_40"
                 />
             <TextView
                 android:id="@+id/cinema_details_name"
@@ -25,9 +25,9 @@
                 android:layout_height="wrap_content"
                 android:text="姓名"
                 android:textColor="#fff"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="@dimen/dp_15"
                 android:layout_toRightOf="@+id/cinema_details_logo"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="@dimen/dp_40"
                 />
             <TextView
                 android:id="@+id/cinema_details_dress"
@@ -35,19 +35,19 @@
                 android:layout_height="wrap_content"
                 android:text="地址"
                 android:textColor="#fff"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_15"
                 android:layout_toRightOf="@+id/cinema_details_logo"
                 android:layout_below="@+id/cinema_details_name"/>
 
         </RelativeLayout>
         <ImageView
             android:id="@+id/cinema_details_navigation"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginTop="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_40"
             android:background="@drawable/com_icon_navigation_default_hdpi"
             />
     </RelativeLayout>
@@ -55,12 +55,12 @@
     <RelativeLayout
         android:id="@+id/cinema_details_RelativeLayout2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp">
+        android:layout_height="@dimen/dp_300"
+        android:layout_marginTop="@dimen/dp_150">
         <recycler.coverflow.RecyclerCoverFlow
             android:id="@+id/cinema_details_RecyclerCoverFlow"
             android:layout_width="match_parent"
-            android:layout_height="400dp"></recycler.coverflow.RecyclerCoverFlow>
+            android:layout_height="match_parent"></recycler.coverflow.RecyclerCoverFlow>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
