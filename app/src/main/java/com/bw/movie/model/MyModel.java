@@ -1,6 +1,7 @@
 package com.bw.movie.model;
 import android.util.Log;
 
+import com.bw.movie.bean.MyByPiao;
 import com.bw.movie.bean.WXBean;
 import com.bw.movie.bean.CinemaSousuoBean;
 import com.bw.movie.bean.MyFragmentVipBean;
@@ -64,6 +65,7 @@ public class MyModel {
     SetResetPasswords  setResetPasswords;
     setMyFeedBack setMyFeedBack ;
     setSousuo setSousuo ;
+    setByPiao setByPiao;
 
     private final RetrofitUtil util;
     private final Api api;
@@ -532,6 +534,28 @@ public class MyModel {
                 });
     }
 
+    //我的页面意见反馈
+    public void mToMyBypiao(int userId, String sessionId, int page, int count, int status){
+        api.getByPiao(userId, sessionId, page,count,status)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<ResponseBody>() {
+                    @Override
+                    public void call(ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            //Log.e("AGE" ,"意见反馈"+string);
+                            Gson gson = new Gson();
+                            MyByPiao myByPiao = gson.fromJson(string, MyByPiao.class);
+                            setByPiao.Succeed(myByPiao);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+
     //电影院搜索
     public void mToSousuo(int userId,String sessionId,int page,int count,String cinemaName){
         api.getSousuo(page, count, cinemaName)
@@ -943,4 +967,12 @@ public class MyModel {
             public void Succeed(Object object);
             public void error(Object object);
         }
+
+    public void setSetByPiao(setByPiao set){
+        setByPiao = set ;
+    }
+    public interface setByPiao{
+        public void Succeed(Object object);
+        public void error(Object object);
+    }
 }

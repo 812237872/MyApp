@@ -15,7 +15,7 @@
                 android:background="@drawable/shape_recycler_cover_flow"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_50"
-                android:layout_marginTop="@dimen/dp_250"
+                android:layout_marginTop="@dimen/dp_200"
                 android:gravity="center"
                 android:text="电影名称"/>
     </RelativeLayout>

@@ -137,5 +137,11 @@ public interface Api {
     getSousuo(
               @Query("page") int page ,@Query("count") int count , @Query("cinemaName") String cinemaName);
 
+    //我的页面购票记录
+    @GET("movieApi/user/v1/verify/findUserBuyTicketRecordList")
+    public Observable<ResponseBody>
+    getByPiao(@Header("userId")int userId , @Header("sessionId")String sessionId,
+              @Query("page") int page ,@Query("count") int count , @Query("status") int status);
+
 
 }

@@ -30,7 +30,7 @@ public class MyFragment extends Fragment implements ContractInterface.MyFragment
     private TextView mine_name;
     private Button qiandao;
     private ContractInterface.PresenterInterface presenterInterface;
-    private ImageView myinfo,back_login,mine_like,mine_yijian;
+    private ImageView myinfo,back_login,mine_like,mine_yijian,mine_bypiao;
 
     @Nullable
     @Override
@@ -47,6 +47,9 @@ public class MyFragment extends Fragment implements ContractInterface.MyFragment
         mine_like = view.findViewById(R.id.mine_like);
         //意见反馈
         mine_yijian = view.findViewById(R.id.mine_yijian);
+        //购票记录
+        mine_bypiao = view.findViewById(R.id.mine_bypiao);
+
         return view;
     }
 
@@ -86,7 +89,7 @@ public class MyFragment extends Fragment implements ContractInterface.MyFragment
                 getActivity().finish();
             }
         });
-
+        //意见反馈
         mine_yijian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +97,23 @@ public class MyFragment extends Fragment implements ContractInterface.MyFragment
                 startActivity(intent);
             }
         });
+        //我们的关注
+        mine_like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext() , MyAttention.class);
+                startActivity(intent);
+            }
+        });
+        //购票记录
+        mine_bypiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext() , MyBypiao.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }

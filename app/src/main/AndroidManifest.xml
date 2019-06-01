@@ -86,8 +86,7 @@
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".view.CinemaDetailsActivity"
             android:screenOrientation="portrait" />
@@ -100,14 +99,17 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".view.activity.NotNetActivity"
-            android:launchMode="singleInstance"
-            ></activity>
+        <activity
+            android:name=".view.activity.NotNetActivity"
+            android:launchMode="singleInstance" />
+
         <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".view.MyMessageActivity" />
         <activity android:name=".view.ResetPasswords" />
-        <activity android:name=".view.MyFeedBack"></activity>
+        <activity android:name=".view.MyFeedBack" />
+        <activity android:name=".view.MyAttention" />
+        <activity android:name=".view.MyBypiao"></activity>
     </application>
 
 </manifest>

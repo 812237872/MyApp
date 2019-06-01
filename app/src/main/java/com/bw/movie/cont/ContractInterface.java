@@ -101,6 +101,11 @@ public interface ContractInterface {
         public void showSousuo(Object object);
     }
 
+    // 我 的页面购票记录
+    public interface MyBypiao{
+        public void MyBypiao(Object object);
+    }
+
 
     //P层接口
     public interface PresenterInterface{
@@ -135,6 +140,9 @@ public interface ContractInterface {
         public void pToResetPasswords(int userId,String sessionId,String oldPwd,String newPwd,String newPwd2);
         //我的页面意见反馈
         public void pToMyFeedBack(int userId,String sessionId,String content);
+        //我的页面购票记录
+        public void pToMyBypiao(int userId,String sessionId,int page ,int count,int status);
+
 
         public void toHotMove();
         public void toMoving();

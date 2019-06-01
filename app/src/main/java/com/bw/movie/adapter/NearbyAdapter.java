@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.QuickContactBadge;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bw.movie.R;
@@ -130,7 +131,7 @@ public class NearbyAdapter extends RecyclerView.Adapter<NearbyAdapter.holder> {
         SimpleDraweeView simpleDraweeView ;
         TextView name , address ,distance ;
         CheckBox imageView ;
-        LinearLayout linearLayout;
+        RelativeLayout linearLayout;
 
         public holder(@NonNull View itemView) {
             super(itemView);

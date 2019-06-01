@@ -8,6 +8,7 @@ import com.bw.movie.bean.DetailsFragmentBean;
 import com.bw.movie.bean.DetailsBean;
 import com.bw.movie.bean.EvaluateFragmentBean;
 import com.bw.movie.bean.FlowBean;
+import com.bw.movie.bean.MyByPiao;
 import com.bw.movie.bean.MyFragmentVipBean;
 import com.bw.movie.bean.NearbyBean;
 import com.bw.movie.bean.RecommendBean;
@@ -266,6 +267,23 @@ public class MyPresenter<T> implements ContractInterface.PresenterInterface {
             }
         });
         myModel.mToMyFeedBack(userId, sessionId, content);
+    }
+    // 我的页面猴票记录
+    @Override
+    public void pToMyBypiao(int userId, String sessionId, int page, int count, int status) {
+        myModel.setSetByPiao(new MyModel.setByPiao() {
+            @Override
+            public void Succeed(Object object) {
+                MyByPiao myByPiao = (MyByPiao) object;
+                List<MyByPiao.ResultBean> result = myByPiao.getResult();
+                ContractInterface.MyBypiao myypiao = (ContractInterface.MyBypiao) tt;
+                myypiao.MyBypiao(result);
+            }
+            @Override
+            public void error(Object object) {
+            }
+        });
+        myModel.mToMyBypiao(userId, sessionId, page, count, status);
     }
 
     //热门电影
